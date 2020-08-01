@@ -1,0 +1,204 @@
+﻿/* common */
+
+h5 {
+    display: inline-block;
+}
+
+body {
+    background-color: #ffffff;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: red;
+}
+
+    a:hover {
+        text-decoration: underline;
+        color: red;
+    }
+
+footer .col-md-12 {
+    padding: 40px;
+    min-height: 232px;
+    background-color: #e9e9f2;
+    text-align: center;
+}
+
+.navbar-nav {
+    background-color: #F5F5F5;
+    font-size: 10px;
+    color: #999999;
+}
+
+    .navbar-nav .row {
+        min-height: 30px;
+        line-height: 30px;
+    }
+
+.sreachBtn {
+    width: 110px;
+    height: 127px;
+    margin: 0 auto;
+    vertical-align: middle;
+}
+
+#CommoditySearch {
+    border: 2px solid #ff1800;
+    border-radius: 0;
+    margin-top: 41px;
+    width: 100%;
+    height: 35px;
+    padding: 0 10px;
+}
+
+    #CommoditySearch:focus {
+        border: 2px solid #ff1800;
+        border-radius: 0;
+        outline: 0;
+    }
+
+.comcon-title {
+    text-align: center;
+    background-image: linear-gradient(120deg, #ff9700 0%, #ff1800 100%);
+}
+
+    .comcon-title a {
+        width: 180px;
+        display: inline-block;
+        color: #fff;
+    }
+
+        .comcon-title a:hover {
+            text-decoration: none;
+            background-color: rgba(0,0,0,0.15);
+        }
+
+.comm-size {
+    text-align: center;
+    margin: 10px 5px 0 5px;
+    line-height: 27px;
+    display: inline-block;
+    min-width: 30px;
+    height: 33px;
+    color: #000000;
+    border: 2px solid #e5e5e5;
+}
+
+    .comm-size:hover {
+        border: 2px solid #ff1800;
+        color: #000000;
+        text-decoration: none;
+        transition: all 0.2s ease-in;
+    }
+
+.set {
+    border: 2px solid #ff1800;
+    color: #ff1800;
+}
+
+    .set:hover {
+        color: #ff1800;
+    }
+
+#subtract, #add {
+    width: 35px;
+    height: 35px;
+    background-color: #ff1800;
+    color: #ffffff;
+    border: none;
+    outline: none;
+}
+
+    #subtract:after, #add:after {
+        border: none;
+    }
+
+.disbtn {
+    background-color: rgba(255, 0, 0, 0.5) !important;
+}
+
+.countinput {
+    width: 50px;
+    height: 35px;
+    border-radius: unset;
+    text-align: center;
+    padding-bottom: 2px;
+}
+
+.nowbuy, .addcar {
+    height: 40px;
+    text-align: center;
+    width: 30%;
+    background-color: #ff1800;
+    color: #ffffff;
+    border: none;
+    outline: none;
+}
+
+.addcar {
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+
+.tocar {
+    height: 41px;
+    text-align: center;
+    background-color: #ff9700;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    width: 15%;
+    font-size: 13px;
+}
+
+.loginaccount {
+    background-color: rgba(0, 0, 0, 0.25);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 1000;
+}
+
+.loginform {
+    margin: 0 auto;
+    padding: 20px 30px;
+    margin-top: 100px;
+    background-color: #e5e5e5;
+}
+
+.showintroduce {
+    list-style: none;
+    margin-top: 20px;
+    font-size: 15px;
+    line-height: 30px;
+}
+
+.showcomment {
+    padding: 0 5px;
+    list-style: none;
+    margin-top: 20px;
+    font-size: 12px;
+    line-height: 30px;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 8px;
+}
+
+.nav2 a {
+    width: 80px;
+    font-size: 12px;
+    background-color: #ff1800;
+    float: right;
+    margin-right: 20px;
+    color: #ffffff;
+}
+
+.nav2 li {
+    margin-left: 5px;
+    margin-right: 5px;
+}

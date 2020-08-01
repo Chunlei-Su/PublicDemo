@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <!-- 标题图标 -->
+    <link rel="icon" href="~/images/primary/indexlogo.png" type="image/x-icon">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+    @RenderBody()
+
+    <footer>
+        <div class="col-md-12">
+            <div class="container">
+                <p>&copy;2018-2020 Charles' Shopping-House</p>
+                <p>互联网药品信息服务资格证书（浙）-经营性-2018-0010|短消息类服务接入代码使用证书：号【2016】00154-A01|信息网络传播视听许可证：1109364号|出版物网络交易平台服务经营备案号：新出发浙备字第002号,本站素材来源于淘宝，侵权删。<a asp-action="AdminLogin" asp-controller="ShoppigBackEnd">埃内米</a></p>
+            </div>
+        </div>
+    </footer>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

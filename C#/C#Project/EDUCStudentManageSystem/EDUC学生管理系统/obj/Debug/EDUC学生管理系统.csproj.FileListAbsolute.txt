@@ -1,0 +1,13 @@
+E:\C#\C#与数据库课上代码\EDUC学生管理系统\EDUC学生管理系统\bin\Debug\EDUC学生管理系统.exe.config
+E:\C#\C#与数据库课上代码\EDUC学生管理系统\EDUC学生管理系统\bin\Debug\EDUC学生管理系统.exe
+E:\C#\C#与数据库课上代码\EDUC学生管理系统\EDUC学生管理系统\bin\Debug\EDUC学生管理系统.pdb
+E:\C#\C#与数据库课上代码\EDUC学生管理系统\EDUC学生管理系统\bin\Debug\EducationDll.dll
+E:\C#\C#与数据库课上代码\EDUC学生管理系统\EDUC学生管理系统\bin\Debug\EducationDll.pdb
+E:\C#\C#与数据库课上代码\EDUC学生管理系统\EDUC学生管理系统\obj\Debug\EDUC学生管理系统.csprojAssemblyReference.cache
+E:\C#\C#与数据库课上代码\EDUC学生管理系统\EDUC学生管理系统\obj\Debug\EDUC学生管理系统.Form1.resources
+E:\C#\C#与数据库课上代码\EDUC学生管理系统\EDUC学生管理系统\obj\Debug\EDUC学生管理系统.Properties.Resources.resources
+E:\C#\C#与数据库课上代码\EDUC学生管理系统\EDUC学生管理系统\obj\Debug\EDUC学生管理系统.csproj.GenerateResource.cache
+E:\C#\C#与数据库课上代码\EDUC学生管理系统\EDUC学生管理系统\obj\Debug\EDUC学生管理系统.csproj.CopyComplete
+E:\C#\C#与数据库课上代码\EDUC学生管理系统\EDUC学生管理系统\obj\Debug\EDUC学生管理系统.exe
+E:\C#\C#与数据库课上代码\EDUC学生管理系统\EDUC学生管理系统\obj\Debug\EDUC学生管理系统.pdb
+E:\C#\C#与数据库课上代码\EDUC学生管理系统\EDUC学生管理系统\obj\Debug\EDUC学生管理系统.signIn.resources

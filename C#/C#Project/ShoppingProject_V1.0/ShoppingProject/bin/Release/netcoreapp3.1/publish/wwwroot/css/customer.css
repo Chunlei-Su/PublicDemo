@@ -1,0 +1,119 @@
+﻿/* common */
+
+h5 {
+    display: inline-block;
+}
+
+body {
+    background-color: #ffffff;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: red;
+}
+
+    a:hover {
+        text-decoration: underline;
+        color: red;
+    }
+
+footer .col-md-12 {
+    padding: 40px;
+    min-height: 232px;
+    background-color: #e9e9f2;
+    text-align: center;
+}
+/* HomePage */
+.navbar-nav {
+    background-color: #F5F5F5;
+    font-size: 10px;
+    color: #999999;
+}
+
+    .navbar-nav .row {
+        min-height: 30px;
+        line-height: 30px;
+    }
+
+.customer-title {
+    min-height: 60px;
+    background-image: linear-gradient(120deg, #ff9700 0%, #ff1800 100%);
+    line-height: 60px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.customer-infocard {
+    width: 100%;
+    min-height: 100px;
+    background-color: #F5F5F5;
+    margin: 10px 0;
+    border-radius: 5px;
+    vert-align: middle;
+    padding-top: 15px;
+    padding-left: 20px;
+}
+
+.customer-head {
+    border-radius: 2px;
+    border: 2px solid #ffffff;
+    width: 69px;
+    height: 69px;
+    display: inline-block;
+}
+
+.customer-name {
+    padding-left: 20px;
+    display: inline-block;
+}
+
+.changeinfolink {
+    width: 100px;
+    display: inline-block;
+}
+
+.customer-shoppingcard, .customer-dealcard {
+    display: inline-block;
+    margin-left: 100px;
+}
+
+.page-header {
+    border-bottom: 1px solid #999999;
+}
+
+.taglist a {
+    color: #8a6d3b;
+}
+.taglist a:hover {
+    color: #8a6d3b;
+}
+
+    .taglist .alert {
+        margin: 10px;
+    }
+
+/*------------------信息修改界面--------------------*/
+.custchange-bg {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    min-height: 650px;
+    background-color: #F5F5F5;
+    border-radius: 5px;
+}
+
+.uploadhead {
+    position: absolute;
+    line-height: 60px;
+    opacity: 0;
+}
+
+#tips {
+    color: darkgrey;
+    line-height: 60px;
+    margin-left: 10px;
+}

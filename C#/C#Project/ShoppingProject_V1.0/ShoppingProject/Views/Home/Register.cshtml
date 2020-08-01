@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+}
+
+<link rel="stylesheet" href="~/css/LogAndReg.css" />
+<link href="~/css/animate.css" rel="stylesheet" />
+<script src="~/js/wow.min.js"></script>
+
+<div class="container loginheader">
+    <div class="row">
+        <div class="col-md-12 ">
+                <a asp-action="Index" title="返回首页"><img src="~/images/primary/login.gif" alt="图片无法加载" width="200px" /></a>
+                <p class="text-right" style="display: inline-block; padding-left: 10px; color: black">欢迎注册！</p>
+        </div>  
+    </div>
+</div>
+<div class="col-md-12 loginbody">
+    <div class="container">
+        <div class="row wow fadeInLeft animated">
+            <div class="col-md-12 " style="text-align: center">
+                <p style="padding-top: 30px">来，让我们的遇见从注册开始~~</p>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="loginform col-md-12" style="margin-top: 50px; width: 100%; min-height: 320px; padding-left: 50px; padding-right: 50px;">
+                    <form action="/" method="post" id="custRegisterForm" onsubmit="return customerRegister()">
+                        <p style="padding: 0 0 10px 0; font-size: 16px; color:black" id="loginnote" class="col-md-12">注册您的信息</p>
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">昵&ensp;&ensp;称</span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="昵称" id="CustomerName" name="CustomerName" maxlength="20">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">密&ensp;&ensp;码</span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="密码" id="CustomerPassword" name="CustomerPassword" maxlength="10">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">电&ensp;&ensp;话</span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="电话" id="CustomerTel" name="CustomerTel" maxlength="11">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" title="忘记密码时，凭丢失码可以直接使用新密码登录">丢失码</span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="丢失码" id="LostPasswordKey" name="LostPasswordKey" maxlength="10">
+                                    </div>
+                                </div>
+                            </div>
+                          
+                        </div>
+                        <input type="submit" name="tologin" value="注册" class="btn btn-primary form-control" style="margin: 10px 0" />
+                    </form>
+                    <a asp-action="Login">已有帐号？去登陆</a>
+                </div>
+
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
+<script src="~/js/register.js"></script>

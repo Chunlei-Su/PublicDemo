@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_BackEnd";
+}
+<link href="~/css/admin_index.css" rel="stylesheet" />
+
+<div class="navbar-nav">
+    <div class="container">
+        <div class="row">
+            @* 顶部显示，问候语，登录名 *@
+            <div class="col-md-12">
+                <p style="display: inline-block">Charles' BackEndPage</p>
+                <p style="display: inline-block; float: right">
+                    <span>管理员：@ViewBag.AdminAccount&nbsp;</span>
+                    <a asp-action="Index" asp-controller="Home"> 退出登录</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="admin-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10" style="font-size: 25px; font-weight: bold">Hello Administrator!</div>
+        </div>
+    </div>
+</div>

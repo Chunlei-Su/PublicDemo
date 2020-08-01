@@ -1,0 +1,5 @@
+E:\C#\C#与数据库课上代码\EDUC学生管理系统\EducationDll\bin\Debug\EducationDll.dll
+E:\C#\C#与数据库课上代码\EDUC学生管理系统\EducationDll\bin\Debug\EducationDll.pdb
+E:\C#\C#与数据库课上代码\EDUC学生管理系统\EducationDll\obj\Debug\EducationDll.dll
+E:\C#\C#与数据库课上代码\EDUC学生管理系统\EducationDll\obj\Debug\EducationDll.pdb
+E:\C#\C#与数据库课上代码\EDUC学生管理系统\EducationDll\obj\Debug\EducationDll.csprojAssemblyReference.cache

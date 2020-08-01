@@ -1,0 +1,40 @@
+﻿/* common */
+
+h5 {
+    display: inline-block;
+}
+
+body {
+    background-color: #ffffff;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: red;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: red;
+}
+.navbar-nav {
+    background-color: #F5F5F5;
+    font-size: 10px;
+    color: #999999;
+}
+
+.navbar-nav .row {
+    min-height: 30px;
+    line-height: 30px;
+}
+.admin-title {
+    min-height: 60px;
+    background-image: linear-gradient(120deg, #ff9700 0%, #ff1800 100%);
+    line-height: 60px;
+    font-size: 20px;
+    color: #fff;
+}

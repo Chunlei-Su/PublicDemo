@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EDUC学生管理系统", "EDUC学生管理系统\EDUC学生管理系统.csproj", "{DE7E7829-714E-41E6-BBDF-D9EAEE883E23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EducationDll", "EducationDll\EducationDll.csproj", "{1BE9E7EE-B75A-49AF-8A10-4210BADE8B9A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE7E7829-714E-41E6-BBDF-D9EAEE883E23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE7E7829-714E-41E6-BBDF-D9EAEE883E23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE7E7829-714E-41E6-BBDF-D9EAEE883E23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE7E7829-714E-41E6-BBDF-D9EAEE883E23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BE9E7EE-B75A-49AF-8A10-4210BADE8B9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BE9E7EE-B75A-49AF-8A10-4210BADE8B9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BE9E7EE-B75A-49AF-8A10-4210BADE8B9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BE9E7EE-B75A-49AF-8A10-4210BADE8B9A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {568A9633-71E1-4A05-93AC-E07B732BF22C}
+	EndGlobalSection
+EndGlobal

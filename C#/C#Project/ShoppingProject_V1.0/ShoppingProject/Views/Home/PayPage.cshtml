@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewData["Title"] = "PayPage";
+}
+
+<link href="~/css/customer.css" rel="stylesheet" />
+@* 导航 *@
+<div class="navbar-nav">
+    <div class="container">
+        <div class="row">
+            @* 顶部显示，问候语，登录名 *@
+            <div class="col-md-12">
+                <p style="display: inline-block">便捷购物，幸福生活</p>
+                <p style="display: inline-block; float: right">
+                    <span>尊敬的：@ViewBag.CustomerName[0] &nbsp;</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="customer-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10" style="font-size: 25px;font-weight: bold">付款页-宝贝离你越来越近了</div>
+            @if (DateTime.Now.Hour >= 6 && DateTime.Now.Hour < 11)
+            {
+                <div class="col-md-2" style="text-align: center;">上午好！</div>
+            }
+            @if (DateTime.Now.Hour >= 11 && DateTime.Now.Hour < 13)
+            {
+                <div class="col-md-2" style="text-align: center;">中午好！</div>
+            }
+            @if (DateTime.Now.Hour >= 13 && DateTime.Now.Hour < 18)
+            {
+                <div class="col-md-2" style="text-align: center;">下午好！</div>
+            }
+            @if (DateTime.Now.Hour >= 18 && DateTime.Now.Hour < 24)
+            {
+                <div class="col-md-2" style="text-align: center;">晚上好！</div>
+            }
+            @if (DateTime.Now.Hour >= 0 && DateTime.Now.Hour < 6)
+            {
+                <div class="col-md-2" style="text-align: center;">晚安！</div>
+            }
+
+        </div>
+    </div>
+</div>
+
+<div class="container" style="height: 700px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="customer-infocard">
+                <p>尊敬的：@ViewBag.CustomerName[0],您本次一共提交了 @ViewBag.count 件商品，共 @ViewBag.DealAllMoney 元。</p>
+                <br />
+                <br />
+                <button class="btn btn-danger" id="orders">确认付款</button>
+                <br />
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(() => {
+        $("#orders").click(() => {
+            $.post("PayDeal",
+                {
+                    isorder: true
+                },
+                (data) => {
+                    if (data)
+                        window.location.href = "Index";
+                    else {
+                        alert("支付失败");
+                    }
+                });
+        });
+    });
+</script>

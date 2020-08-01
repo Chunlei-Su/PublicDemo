@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <a href="top"></a>
+    @*复用的标头*@
+    <div class="nav-color text-center">
+        <h2 style="padding-top:20px;">新闻发布</h2>
+        <br />
+        <span style="margin-left:250px">——直击事件最深处</span>
+    </div>
+
+    @RenderBody()
+
+
+    @* 底部 *@
+    <footer>
+        <div class="bottom">
+            <div class="bottom-content">
+                <span>Copyright:Chunlei_Su.163.com</span>
+                <br />
+                <span>About Us:Chunlei_Su Production</span>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        //为高亮显示的页码添加样式
+        $(function () {
+            if (!isNaN(@ViewBag.PageActive)) {
+                var pages = document.getElementById(@ViewBag.PageActive);
+                pages.className = 'page-color';
+            }
+            //页码大于5页，显示
+            if (@ViewBag.pages[6] >= 5) {
+                var pages = document.getElementById('pagebottom');
+                pages.style.display = "block";
+            }
+            //页吗小于5页大于0页显示一部分
+            if (@ViewBag.Pages[6]> 0 && @ViewBag.Pages[6]< 5) {
+                 var pages = document.getElementById('pagebottomsecond');
+                pages.style.display = "block";
+            }
+        });
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

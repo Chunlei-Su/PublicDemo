@@ -1,0 +1,302 @@
+﻿
+@{
+    ViewData["Title"] = "DealNotarize";
+}
+@{
+    int allmoney = 0;
+    int b = 0;
+    int count = 0;
+}
+
+<link href="~/css/dealnotarize.css" rel="stylesheet" />
+@* 导航 *@
+<div class="navbar-nav">
+    <div class="container">
+        <div class="row">
+            @* 顶部显示，问候语，登录名 *@
+            <div class="col-md-12">
+                <p style="display: inline-block">便捷购物，幸福生活</p>
+                @if (ViewBag.CustomerName == null)
+                {
+                    <a asp-action="Login" style="float: right">亲，请登录</a>
+                    //指示用户是否登录
+                    <input type="hidden" id="accountstats" value="0" />
+                }
+                else
+                {
+                    <p style="display: inline-block; float: right">
+                        <span>尊敬的：@ViewBag.CustomerName[0]&nbsp;</span>
+
+                        <a asp-action="CustomerPage"> 个人界面</a>
+                        <a asp-action="OutLogin"> 退出登录</a>
+                    </p>
+                    <input type="hidden" id="accountstats" value="1" />
+                    <input type="hidden" id="Customer-Number" value="@ViewBag.CustomerNumber" />
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="col-md-12" style="padding-left: 0;">
+        <h2 style="color: red; margin-top: 20px; margin-bottom: 30px;">请确认订单信息：</h2>
+    </div>
+    <div class="row" id="addresssection">
+        <div class="col-md-12" style="font-size: 15px;font-weight: bold">请选择您的收货地址：</div>
+        @{ int a = 1;}
+        @for (int i = 0; i < ViewBag.CustAddress.Length - 1; i++)
+        {
+            <div class="col-md-3">
+                <div class="addressbox" onclick="SetAddress(this,'@ViewBag.CustAddress[i]')">
+                    <span class="addresstitle">收货地址 @(a++)</span>
+                    <p style="margin:10px 10px 0; font-size: 15px; color: #6c6c6c">@ViewBag.CustAddress[i]</p>
+                </div>
+            </div>
+        }
+        @if (a == 1)
+        {
+            <div class="col-md-3">
+                暂无收获地址，点此新建收货地址
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        }
+    </div>
+    <br />
+    <br />
+    <div class="row" id="dealcontent">
+        <div class="col-md-12" style="font-size: 15px; font-weight: bold; margin-bottom: 10px;">请确认您的订单（在此页面创建的订单，若得不到及时的支付，订单会在24小时后消失）：</div>
+        <form asp-action="NotarizeDeal" method="post" onsubmit="return CheckAddress()" id="submitdeal" class="col-md-12">
+            <input type="hidden" name="custnumber" value="@ViewBag.CustomerNumber" />
+            <input type="hidden" name="commnumber" value="@ViewBag.CommodityNumber" />
+            <input type="hidden" name="sellernumber" value="@ViewBag.SellerNumber" />
+            <input type="hidden" name="address" id="deal-address" value="" />
+            <table class="table" style="cursor: pointer">
+                <thead style="font-size: 15px;">
+                    <tr class="bg-light">
+                        <th>商品名称</th>
+                        <th>商品属性</th>
+                        <th>单价</th>
+                        <th>数量</th>
+                        <th>小计</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (ViewBag.DealInfo != null)
+                    {
+                        @foreach (var item in ViewBag.DealInfo)
+                        {
+                            <input type="hidden" name="guids[]" value="@item.DealKey" />
+                            <tr>
+                                <td>
+                                    <img src="@item.CommodityPic[0]" width="40" style="border: 1px solid #d3d3d3" />
+                                    <a class="back" asp-action="CommodityContentPage" asp-route-commodityname="@item.CommodityName">
+                                        <span style="margin-left: 10px; font-size: 12px; color: #6c6c6c" title="@item.CommodityName">
+                                            @if (item.CommodityName.Length > 20)
+                                            {
+                                                @item.CommodityName.Substring(0, 20)
+                                            }
+                                            else
+                                            {
+                                                @item.CommodityName
+                                            }
+                                        </span>
+                                    </a>
+                                </td>
+                                <td style="font-size: 12px; color: #6c6c6c;">
+                                    <p>规格：@item.CommoditySize</p>
+                                    <p>颜色：@item.CommodityColor</p>
+                                    @*<input type="hidden" name="commsize[]" value="@item.CommoditySize" />
+                                        <input type="hidden" name="commcolor[]" value="@item.CommodityColor" />*@
+                                </td>
+                                <td style="font-size: 12px;">￥@item.OneMoeny</td>
+                                <input type="hidden" id="onemoney-@b" value="@item.OneMoeny" />
+                                <td>
+                                    @* 两种极端情况，需要将按钮隐藏 *@
+                                    @if (item.DealCount == 1)
+                                    {
+                                        <button type="button" id="subtract-@b" class="disbtn operater" style="outline: none;" disabled onclick="subtract( '@b', '@item.DealKey')">-</button>
+                                    }
+                                    else
+                                    {
+                                        <button type="button" id="subtract-@b" class="operater" style="outline: none;" onclick="subtract( '@b', '@item.DealKey')">-</button>
+                                    }
+
+                                    <input id="commcount-@b" type="text" value="@item.DealCount" disabled="disabled" class="countinput" />
+
+                                    @if (item.DealCount == item.CommodityInventory)
+                                    {
+                                        <button type="button" onclick="add('@b', '@item.DealKey')" style="outline: none;" disabled id="add-@b" class="operater">-</button>
+                                    }
+                                    else
+                                    {
+                                        <button type="button" onclick="add( '@b', '@item.DealKey')" style="outline: none;" id="add-@b" class="operater">+</button>
+                                    }
+                                    <span style="font-size: 12px; color: #6c6c6c;">&nbsp;库存：@item.CommodityInventory</span><input type="hidden" value="@item.CommodityInventory" id="comminventory" />
+                                </td>
+                                @{ int classmoney = item.OneMoeny * item.DealCount;}
+                                <td style="color: red; font-weight: bold; font-size: 15px;" id="showmoney-@b">         ￥ @classmoney</td>
+                                <input type="hidden" id="classmoney-@b" value="@classmoney" />
+                                @{
+                                    allmoney += item.OneMoeny * item.DealCount;
+                                    b++;
+                                    count += item.DealCount;
+
+                                }
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <h5>空空如也</h5>
+                        <a asp-action="Index">点击返回主页</a>
+                    }
+
+                </tbody>
+                <input type="hidden" id="deal-allcount" value="@count" />
+            </table>
+        </form>
+    </div>
+    <hr />
+    @if (ViewBag.DealInfo != null)
+    {
+        <div class="row">
+            <div class="col-md-9">
+            </div>
+            <div class="col-md-3" style="text-align: center; padding-top: 10px;">
+                <span style="font-size: 15px; color: #6c6c6c">实付款：</span>
+                <h3 style="color: red" id="showallmoney">￥@allmoney</h3>
+                <input type="hidden" id="allmoney" value="@allmoney" />
+                <button class="btn submit" onclick="submitDeal()">前去付款</button>
+            </div>
+        </div>
+        <br />
+    }
+</div>
+
+<script>
+
+    //存储原始的库存数据
+    var inventorycount = 0;
+    //存储原始的交易数量
+    var dealallcount = 0;
+    //商品ID
+    var commodityNumber = '@ViewBag.CommodityNumber';
+    //店铺ID
+    var sellerNumber ='@ViewBag.SellerNumber';
+    //用户ID
+    var customerNumber = '@ViewBag.CustomerNumber';
+
+    //设置同步
+    $.ajaxSettings.async = false;
+
+
+    $(() => {
+        inventorycount = parseInt($("#comminventory").val());
+        dealallcount = parseInt($("#deal-allcount").val());
+    });
+
+    var chooseaddress = 0;
+    function SetAddress(el, address) {
+        chooseaddress = 1;
+        $("#addresssection .addressbox").removeClass("set");
+        $(el).addClass("set");
+        $("#deal-address").val(address);
+    }
+
+    function CheckAddress() {
+        if (chooseaddress == 0) {
+            alert("请选择收货地址");
+            return false;
+        }
+        return true;
+    }
+
+    //减少商品数量
+    function subtract(i, guid) {
+        if (!ChangeCount(guid, '-')) {
+            return;
+        }
+        var maxval = $("#comminventory").val();
+        var val = parseInt($("#commcount-" + i).val()) - 1;
+        $("#commcount-" + i).val(val);
+        //对应减少小计的钱数
+        $("#classmoney-" + i).val(parseInt($("#classmoney-" + i).val()) - parseInt($("#onemoney-" + i).val()));
+        $("#showmoney-" + i).text("￥" + $("#classmoney-" + i).val());
+        $("#allmoney").val(parseInt($("#allmoney").val()) - parseInt($("#onemoney-" + i).val()));
+        $("#showallmoney").text("￥" + $("#allmoney").val());
+
+        if (val < 2) {
+            $("#subtract-" + i).removeAttr("active", ' ');
+            $("#subtract-" + i).attr("disabled", ' ');
+            $("#subtract-" + i).addClass("disbtn");
+        }
+        if (val < maxval) {
+            $("#add-" + i).removeAttr("disabled", ' ');
+            $("#add-" + i).attr("active", ' ');
+            $("#add-" + i).removeClass("disbtn");
+        }
+        dealallcount--;
+    }
+
+    //添加商品数量
+    function add(i,guid) {
+        if (!ChangeCount(guid, '+')) {
+            return;
+        }
+        var maxval = $("#comminventory").val();
+        var val = parseInt($("#commcount-" + i).val()) + 1;
+        $("#commcount-" + i).val(val);
+        $("#classmoney-" + i).val(parseInt($("#classmoney-" + i).val()) + parseInt($("#onemoney-" + i).val()));
+        $("#showmoney-" + i).text("￥" + $("#classmoney-" + i).val());
+        $("#allmoney").val(parseInt($("#allmoney").val()) + parseInt($("#onemoney-" + i).val()));
+        $("#showallmoney").text("￥" + $("#allmoney").val());
+
+        if (val > 1) {
+            $("#subtract-" + i).removeAttr("disabled", ' ').attr("active", ' ').removeClass("disbtn");
+        }
+        if (val == maxval) {
+            $("#add-" + i).removeAttr("active", ' ').attr("disabled", ' ').addClass("disbtn");
+        }
+        dealallcount++;
+        CheckCount();
+    }
+
+    //检查商品的数量是否超过库存
+    function CheckCount() {
+        if (dealallcount == inventorycount) {
+            $(".operater").attr("disabled", ' ').addClass("disbtn");
+        }
+    }
+
+    //用ajax提交单个商品数量的修改
+    function ChangeCount(guid, operater) {
+        var stats = true;
+        $.post("ChangeDealCount",
+            {
+                commnumber: commodityNumber,
+                sellernumber: sellerNumber,
+                guids:guid,
+                operater: operater
+            },
+            (data) => {
+                if (!data) {
+                    alert("订单数量修改失败！");
+                    stats = false;
+                }
+            });
+        return stats;
+    }
+
+    //提交订单
+    function submitDeal() {
+        $("#submitdeal").submit();
+    }
+
+</script>
+

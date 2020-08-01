@@ -1,0 +1,252 @@
+﻿
+@{
+    ViewData["Title"] = "SellerBackEnd";
+}
+
+<link href="~/css/seller.css" rel="stylesheet" />
+<style>
+    body {
+        background-color: #fff;
+    }
+</style>
+
+<div class="navbar-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p style="display: inline-block">店铺后台界面</p>
+                <p style="display: inline-block; float: right">
+                    <span>这里放店铺号</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="seller-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10" style="font-size: 25px; font-weight: bold">这里放店铺名</div>
+        </div>
+    </div>
+</div>
+
+<div class="container custchange-bg">
+    <div class="col-md-12">
+        <br />
+        <br />
+        <br />
+        <form asp-action="UpdateSellerInfo" id="customerinfo" method="post" class="col-md-9" style="margin: 0 auto">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text">商品名称</span>
+                        </div>
+                        <input type="text" class="form-control" name="commodityname" maxlength="100" value="" placeholder="填写商品名称（100字以内）">
+                    </div>
+                </div>
+            </div>
+
+            @* 此处需要遍历一下 *@
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text">所属分类</span>
+                        </div>
+                        <select name="commodityclass" class="form-control">
+                            @foreach (var item in ViewBag.CommodityClass)
+                            {
+                                <option value="@item[1]" class="form-control">@item[0]</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text">商品规格</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="规格" name="commoditysize" maxlength="100" value="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text">商品外观</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="外观" name="commoditycolor" maxlength="500" value="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text">商品库存</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="库存" name="commodityinventory" maxlength="500" value="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text">商品价格</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="价格" name="commodityprice" maxlength="500" value="">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text">展示图片</span>
+                        </div>
+                        <div class="customer-head" style="margin-left: 10px;">
+                            <img src="~/images/primary/commoditynull.png" width="100%" height="100%" id="commodity-pic" />
+                        </div>
+                        <input type="file" name="customerhead" class="uploadpic" id="uploadhead" />
+                        <input type="hidden" id="commoditypic" name="commoditypicdata" value="" />
+                        <input type="hidden" id="picext" name="picext" value="" />
+                        <span id="tips">(点击添加展示图片)</span>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+            <div class="row" style="text-align: center;">
+                <div class="col-md-6"><button type="submit" class="btn btn-danger">提交修改</button></div>
+                <div class="col-md-6"><a type="button" asp-action="CustomerPage" class="btn btn-danger">返回首页</a></div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
+<script>
+    $(() => {
+        //声明文件读取对象
+        var reader = new FileReader();
+        //当读取到文件后进行赋值
+        reader.onload = function () {
+            $("#commodity-pic").attr("src", this.result);
+            $("#commoditypic").val(this.result);
+        };
+        //当选中文件后进行文件的读取
+        $("#uploadhead").change(function () {
+            var ext = this.files[0].name.split('.');
+            if (ext[ext.length - 1] != 'jpg' && ext[ext.length - 1] != 'jpeg' && ext[ext.length - 1] != 'png') {
+                alert("请选择有效的文件！");
+                return;
+            }
+            $("#picext").val(ext[ext.length - 1]);
+            reader.readAsDataURL(this.files[0]);
+        });
+
+        //检查电话号码格式
+        jQuery.validator.addMethod("CheckTel", function (value, element) {
+            var mobile = /^[1][3,4,5,7,8][0-9]{9}$/;
+            return mobile.test(value);
+        }, "您的号码格式有误");
+
+        //检查昵称是否重复
+        jQuery.validator.addMethod("CheckName",
+            function (value, element) {
+                //如果没改名，就不用去搜索是否重复
+                if ($("#CustomerNowName").val() == value)
+                    return true;
+                //为了避免每输入一个字符就执行一次数据库检查名称请求，在此获取这个元素的焦点状态
+                var isFocus = $("#" + element.id).is(":focus");
+                var boo = true;
+                //只有当该元素失去焦点的时候才会执行检查请求
+                if (!isFocus) {
+                    $.ajax({
+                        url: "/Home/CheckCustomerName",
+                        type: "POST",
+                        async: false,
+                        dataType: "json",
+                        data: { CustName: value },
+                        success: function (data) {
+                            if (data === true) {
+                                boo = false;
+                                return;
+                            }
+                            boo = true;
+                        }
+                    });
+                    return boo;
+                }
+                return true;
+
+            }, "昵称已被使用"
+        );
+
+        $('#customerinfo').validate({
+            //设置验证失败时存放错误提示的标签
+            errorElement: 'span',
+            //设置标签用到的样式
+            errorClass: 'invalid-feedback',
+            //设置验证用的规则
+            rules: {
+                CustomerName: {
+                    required: true,
+                    CheckName: true
+                },
+                CustomerTel: {
+                    required: true,
+                    CheckTel: true,
+                    minlength: 11
+                }
+            },
+            //设置验证失败的错误提示
+            messages: {
+                CustomerName: {
+                    required: "此项必填"
+                },
+                CustomerTel: {
+                    required: "此项必填",
+                    minlength: "电话长度固定为11位"
+
+                },
+            },
+            //验证失败触发的事件
+            errorPlacement: function (error, element) {
+                element.next().remove(); //删除显示图标
+                element.after(
+                    '<span class="glyphicon form-control-feedback invalid-feedback" aria-hidden="true"></span>'
+                );
+                element.parent().append(error);
+            },
+            //设置高亮显示的事件
+            highlight: function (element) {
+                $(element)
+                    .closest('.form-group')
+                    .find('input')
+                    .addClass('is-invalid');
+            },
+            //验证成功的事件
+            success: function (label) {
+                var el = label.closest('.form-group').find('input');
+                el.next().remove(); //与errorPlacement相似
+                el.after('<span class="glyphicon form-control-feedback valid-feedback" aria-hidden="true"></span>');
+                el.removeClass('is-invalid').addClass('is-valid');
+            }
+        });
+    })
+
+</script>

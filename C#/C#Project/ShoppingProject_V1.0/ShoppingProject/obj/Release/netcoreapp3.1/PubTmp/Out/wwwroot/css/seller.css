@@ -1,0 +1,206 @@
+﻿/* common */
+
+h5 {
+    display: inline-block;
+}
+
+body {
+    background-color: #F5F5F5;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: red;
+}
+
+    a:hover {
+        text-decoration: underline;
+        color: red;
+        cursor: pointer;
+    }
+
+footer .col-md-12 {
+    padding: 40px;
+    min-height: 232px;
+    background-color: #e9e9f2;
+    text-align: center;
+}
+/* HomePage */
+.navbar-nav {
+    background-color: #F5F5F5;
+    font-size: 10px;
+    color: #999999;
+}
+
+    .navbar-nav .row {
+        min-height: 30px;
+        line-height: 30px;
+    }
+
+.sellerbgc {
+    min-height: 700px;
+}
+
+
+/*单品show*/
+.contenttitle {
+    margin-top: 10px;
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(120deg, #ff9700 0, #ff1800 100%) 1 10;
+}
+
+.classshowrow {
+    height: 40px;
+    line-height: 40px;
+    font-size: 25px;
+    color: #ffffff;
+    background-color: #ff9200;
+    text-align: center;
+}
+
+.contentbgc {
+    background-color: #fff;
+    height: 320px;
+    margin: 10px 5px;
+    border-radius: 10px;
+}
+
+.contentshowset {
+    text-align: center;
+    border: 1px solid #ededed;
+    overflow: hidden;
+}
+
+    .contentshowset:hover {
+        border: 1px solid red;
+    }
+
+    .contentshowset img {
+        height: 79%;
+        width: 100%;
+    }
+
+    .contentshowset a:hover {
+        text-decoration: none;
+    }
+
+.commodity-money {
+    display: block;
+    text-align: left;
+    font-size: 19px;
+    color: #dc3545;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.commodity-title {
+    display: block;
+    text-align: left;
+    margin: 0 15px;
+    font-size: 12px;
+    color: #929394;
+}
+
+    .commodity-title:hover {
+        color: #dc3545;
+        text-decoration: underline;
+    }
+
+.sellername {
+    display: block;
+    text-align: left;
+    margin-left: 15px;
+    margin-top: 6px;
+    font-size: 12px;
+    color: #929394;
+    line-height: 16px;
+    text-decoration: none;
+}
+
+    .sellername a:hover {
+        color: #dc3545;
+    }
+
+.sellericon {
+    position: absolute;
+    top: 89%;
+}
+
+.sreachBtn {
+    width: 110px;
+    height: 127px;
+    margin: 0 auto;
+    vertical-align: middle;
+}
+
+#CommoditySearch {
+    border: 2px solid #ff1800;
+    border-radius: 0;
+    margin-top: 41px;
+    width: 100%;
+    height: 35px;
+    padding: 0 10px;
+}
+
+    #CommoditySearch:focus {
+        border: 2px solid #ff1800;
+        border-radius: 0;
+        outline: 0;
+    }
+
+/* 店铺后台界面 */
+.seller-title {
+    min-height: 60px;
+    background-image: linear-gradient(120deg, #ff9700 0, #ff1800 100%);
+    line-height: 60px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.custchange-bg {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    min-height: 650px;
+    background-color: #F5F5F5;
+    border-radius: 5px;
+}
+
+#uploadhead {
+    position: absolute;
+    line-height: 60px;
+    opacity: 0;
+}
+
+#tips {
+    color: darkgrey;
+    line-height: 60px;
+    margin-left: 10px;
+}
+
+.customer-head {
+    border-radius: 2px;
+    border: 2px solid #ffffff;
+    width: 69px;
+    height: 69px;
+    display: inline-block;
+}
+
+.topoperatio {
+    position: absolute;
+    top: 20px;
+    display: none;
+}
+
+.topoperationup {
+    left: 35px;
+}
+.topoperationdown {
+    left: 40%;
+}
+.topoperationdel {
+    right: 35px;
+}

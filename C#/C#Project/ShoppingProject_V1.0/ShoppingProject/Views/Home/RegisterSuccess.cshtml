@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewData["Title"] = "注册成功！";
+}
+
+<link href="~/css/LogAndReg.css" rel="stylesheet" />
+
+<style>
+    #showNumber {
+        font-weight: bold;
+        font-size: 60px;
+        line-height: 60px;
+        color: #fff;
+        text-align: center;
+    }
+
+    #gotologin {
+        margin: 60px auto;
+        font-size: 20px;
+    }
+
+</style>
+
+<div class="container loginheader">
+    <div class="row">
+        <div class="col-md-12">
+            <a asp-action="Index" title="返回首页"><img src="~/images/primary/login.gif" alt="图片无法加载" width="200px" /></a>
+            <p class="text-right" style="display: inline-block; padding-left: 50px; color: black">注册成功！</p>
+        </div>
+    </div>
+</div>
+<div class="col-md-12 loginbody">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p style="padding-top: 30px">尊敬的：@ViewBag.CustName,您的专属帐号为：</p>
+            </div>
+            <div class="col-md-12">
+                <P id="showNumber">@ViewBag.CustNumber</P>
+            </div>
+            <a asp-action="Login" id="gotologin" style="color: #ffffff">去登陆</a>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,250 @@
+﻿
+@model ShoppingProject.Models.TableModules.SellerInfo
+@{
+    ViewData["Title"] = "SellerPage";
+}
+
+<link href="~/css/seller.css" rel="stylesheet" />
+<link href="~/css/animate.css" rel="stylesheet" />
+<script src="~/js/wow.min.js"></script>
+@* 导航 *@
+<div class="navbar-nav">
+    <div class="container">
+        <div class="row">
+            @* 顶部显示，问候语，登录名 *@
+            <div class="col-md-12">
+                <p style="display: inline-block">便捷购物，幸福生活</p>
+                @if (ViewBag.CustomerName == null)
+                {
+                    <a asp-action="Login" style="float: right">亲，请登录</a>
+                }
+                else
+                {
+                    <p style="display: inline-block; float: right">
+                        <span>尊敬的：@ViewBag.CustomerName[0]&nbsp;</span>
+
+                        <a asp-action="CustomerPage"> 个人界面</a>
+                        <a asp-action="OutLogin"> 退出登录</a>
+                    </p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@* 搜索 *@
+<div class="col-12" style=" background-image: linear-gradient(120deg, #ff9700 0, #ff3b00 100%);">
+    <div class=" container">
+        <div class="row" style="min-height: 90px;">
+            @* logo *@
+            <div class="col-md-3" style="text-align: center;">
+                <a asp-action="Index">
+                    <img src="~/images/primary/indexlogo.png" width="60" style=" margin-top: 5px;" />
+                </a>
+                <h6 style="color: #fff; font-weight: bold">Seller</h6>
+            </div>
+            @if (ViewBag.SellerSearch == null)
+            {
+                <div class="col-md-9">
+                    <h3 style="line-height: 90px; color: #ffffff">欢迎光临商铺：@ViewBag.SellerName</h3>
+                </div>
+            }
+            else
+            {
+                <div class="col-md-9">
+                    <h3 style="line-height: 90px; color: #ffffff">关键词：@ViewBag.SellerSearch</h3>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="sellerbgc">
+    <div class="container" style="min-height: 100%; margin-top: 10px;">
+
+        @if (ViewBag.SellerSearch == null)
+        {
+            <div class="row">
+                <div class="col-md-8" style="padding: 0">
+                    <div class="card" style="border: none">
+                        <div class="card-header" style="border-bottom: 2px #dfdfdf dotted; background-color: #ffffff">今日上新</div>
+                        <div class="card-body row">
+                            @foreach (var item in ViewBag.NewCommodity)
+                            {
+                                <div class="col-md-4">
+                                    <div class="contentbgc contentshowset">
+                                        <a asp-action="CommodityContentPage" asp-route-commodityname="@item.CommodityName" title="@item.CommodityName">
+
+                                            <img src="@item.CommodityPic[0]" />
+                                        </a>
+                                        <span class="commodity-money">￥@item.CommodityPrice</span>
+                                        <a asp-action="CommodityContentPage" asp-route-commodityname="@item.CommodityName"><span class="commodity-title">@item.CommodityName@item.CommodityName</span></a>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" style="">
+                    <div class="card">
+                        <div class="card-header">店铺信息</div>
+                        <div class="card-body" style="height: 380px;">
+                            <h6>@ViewBag.SellerName</h6>
+                            <img src="@Model.SellerLogo" width="100" height="50" style="position: absolute; left: 200px; top: 54px;" />
+                            <hr />
+                            <h6>浏览量：@Model.SellerVisit</h6>
+                            <h6>销量：@Model.SalesVolume</h6>
+                            <br />
+                            <img src="@Model.SellerPic" width="100%" height="60%" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div class="row">
+            <div class="card col-md-12" style="border: none; margin-top:10px;">
+                <div class="card-header" style="border-bottom: 2px #dfdfdf dotted; background-color: #ffffff">
+
+                    @if (ViewBag.SellerSearch == null)
+                    {
+                        <span>店内热卖</span>
+                    }
+                    else
+                    {
+                        <span>为您找到一下内容</span>
+                    }
+                </div>
+                <div class="card-body row">
+                    @if (ViewBag.SellerSearch == null)
+                    {
+                        @foreach (var item in ViewBag.HotCommodity)
+                        {
+                            <div class="col-md-3">
+                                <div class="contentbgc contentshowset">
+                                    <a asp-action="CommodityContentPage" asp-route-commodityname="@item.CommodityName" title="@item.CommodityName">
+
+                                        <img src="@item.CommodityPic[0]" />
+                                    </a>
+                                    <span class="commodity-money">￥@item.CommodityPrice</span>
+                                    <a asp-action="CommodityContentPage" asp-route-commodityname="@item.CommodityName"><span class="commodity-title">@item.CommodityName@item.CommodityName</span></a>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        @if (ViewBag.KeywordCommodity != null)
+                        {
+                            @foreach (var item in ViewBag.KeywordCommodity)
+                            {
+                                <div class="col-md-3">
+                                    <div class="contentbgc contentshowset">
+                                        <a asp-action="CommodityContentPage" asp-route-commodityname="@item.CommodityName" title="@item.CommodityName">
+
+                                            <img src="@item.CommodityPic[0]" />
+                                        </a>
+                                        <span class="commodity-money">￥@item.CommodityPrice</span>
+                                        <a asp-action="CommodityContentPage" asp-route-commodityname="@item.CommodityName"><span class="commodity-title">@item.CommodityName@item.CommodityName</span></a>
+                                    </div>
+                                </div>
+                            }
+                            //分页
+                            <div class="container">
+                                <div class="newspage">
+                                    <ul class="pagination">
+                                        @{ int nextPage = (int)ViewBag.CurrentPageCount + 1; int prvepage = (int)ViewBag.CurrentPageCount - 1;}
+                                        <li class="page-item" id="firstpageshow"><a class="page-link" asp-action="SellerPage" asp-route-sellername="@ViewBag.SellerName" asp-route-sellerSearch="@ViewBag.SellerSearch" asp-route-page="@prvepage">上一页</a></li>
+                                        <li class="page-item active" id="currentpageshow"><a class="page-link" href="javascript:void(0);">@ViewBag.CurrentPageCount</a></li>
+
+                                        <li class="page-item" id="lastpageshow"><a class="page-link" asp-action="SellerPage" asp-route-sellername="@ViewBag.SellerName" asp-route-sellerSearch="@ViewBag.SellerSearch" asp-route-page="@nextPage">下一页</a></li>
+                                        <li class="page-item" ><a class="page-link"class="page-link"  asp-action="SellerPage" asp-route-sellername="@ViewBag.SellerName"  asp-route-sellernumber="@ViewBag.SellerNumber" >返回店铺</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <span>暂无任何内容</span>
+                            <div class="container">
+                                <div class="newspage">
+                                    <ul class="pagination">
+                                        <li class="page-item" ><a class="page-link"class="page-link"  asp-action="SellerPage" asp-route-sellername="@ViewBag.SellerName"  asp-route-sellernumber="@ViewBag.SellerNumber" >返回店铺</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <form asp-action="SellerPage" method="get">
+                <div class="row">
+                    <input type="hidden" name="sellername" value="@ViewBag.SellerName" />
+                    <input type="hidden" name="sellernumber" value="@ViewBag.SellerNumber" />
+                    <div class="col-md-10">
+                        <input type="text" name="SellerSearch" id="CommoditySearch" placeholder="搜索本店的宝贝~" />
+                    </div>
+                    <div class="col-md-2 sreachBtn">
+                        <button type="submit" class="btn" style="margin-top: 39px; width: 100px; background-color: #ff1800; color: #ffffff">
+                            搜本店
+                            @* 搜索图标 *@
+                            <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                                <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                            </svg>
+                            @* 搜索图标end *@
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <br />
+        <div class="row">
+            <img src="~/images/primary/advertising/advertisingone.png" alt="Alternate Text" width="100%" height="120px" />
+        </div>
+        <br />
+    </div>
+</div>
+
+<script>
+
+    $(() => {
+        PageProvider(@ViewBag.CurrentPageCount, @ViewBag.PageCount);
+    });
+    @*var sellername =@ViewBag.SellerName;
+    var keyword=@ViewBag.SellerSearch;*@
+
+    //页码生成器
+    function PageProvider(curpage, allpages ) {
+        //第一次循环 页码的值永远是 当前页-3/-2/-1，配合before
+        for (var i = curpage - 3; i < curpage; i++) {
+            //如果是第一页，上一页不可用
+            if (curpage <= 1) {
+                $("#firstpageshow").addClass("disabled");
+                break;
+            }
+            //如果当前页码小于1，不显示，进行下一次循环
+            if (i < 1)
+                continue;
+            $("#currentpageshow")
+                .before(
+                    "<li class=\"page-item\" id=\"firstpageshow\"><a class=\"page-link\" asp-action=\"SellerPage\" asp-route-sellername=\"@ViewBag.SellerName\" asp-route-sellerSearch=\"@ViewBag.SellerSearch\" asp-route-page=\""+i+"\">"+i+"</a></li>");
+        }
+        //加载当前页之后的页码
+        for (var i = 1; i <= 3; i++) {
+            var next = parseInt(curpage) + i;
+            if (allpages == curpage) {
+                $("#lastpageshow").addClass("disabled");
+            }
+            if (next > allpages)
+                break;
+            $("#lastpageshow").before(
+                "<li class=\"page-item\" id=\"firstpageshow\"><a class=\"page-link\" asp-action=\"SellerPage\" asp-route-sellername=\"@ViewBag.SellerName\" asp-route-sellerSearch=\"@ViewBag.SellerSearch\" asp-route-page=\""+next+"\">"+next+"</a></li>");
+        }
+    }
+
+</script>

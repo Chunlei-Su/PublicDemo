@@ -1,0 +1,114 @@
+﻿/* common */
+
+h5 {
+    display: inline-block;
+}
+
+body {
+    background-color: #ffffff;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #999999;
+}
+
+    a:hover {
+        text-decoration: underline red;
+        color: red !important;
+    }
+
+footer .col-md-12 {
+    padding: 40px;
+    min-height: 232px;
+    background-color: #e9e9f2;
+    text-align: center;
+}
+/* HomePage */
+.navbar-nav {
+    background-color: #F5F5F5;
+    font-size: 10px;
+    color: #999999;
+}
+
+    .navbar-nav .row {
+        min-height: 30px;
+        line-height: 30px;
+    }
+
+.sellerbgc {
+    min-height: 700px;
+}
+
+.addressbox {
+    width: 95%;
+    height: 120px;
+    margin: 10px;
+    border: 3px solid gainsboro;
+    border-radius: 3px;
+    overflow: auto;
+    cursor: pointer;
+}
+
+    .addressbox:hover {
+        border: 3px red solid;
+    }
+
+.addresstitle {
+    margin: 5px 10px 0;
+    border-bottom: 1px #6c6c6c dotted;
+    display: block;
+    font-weight: bold;
+}
+
+.set {
+    border: 3px red solid;
+    background: url('../images/primary/setaddress.png') no-repeat center;
+}
+
+.operater {
+    width: 30px;
+    height: 30px;
+    background-color: #ff1800;
+    color: #ffffff;
+    border: none;
+    outline: none;
+}
+
+    .operater:after {
+        border: none;
+    }
+
+.disbtn {
+    background-color: rgba(255, 0, 0, 0.5) !important;
+}
+
+.countinput {
+    width: 50px;
+    height: 30px;
+    border-radius: unset;
+    text-align: center;
+    padding-bottom: 2px;
+}
+
+.submit {
+    background-color: #ff1800;
+    color: #ffffff;
+    border-radius: unset;
+    margin-top: 10px;
+    width: 200px;
+}
+
+    .submit:hover {
+        color: #ffffff;
+        background-color: #e82814;
+    }
+
+.operation-deal {
+    font-size: 12px;
+    display: block;
+}

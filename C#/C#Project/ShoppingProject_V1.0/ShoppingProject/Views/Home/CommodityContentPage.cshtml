@@ -1,0 +1,690 @@
+﻿@model ShoppingProject.Models.TableModules.CommodityModules
+@{
+    ViewData["Title"] = "CommodityContentPage";
+}
+
+<link href="~/css/commodity.css" rel="stylesheet" />
+<link href="~/css/animate.css" rel="stylesheet" />
+<script src="~/js/wow.min.js"></script>
+
+@* 导航 *@
+<div class="navbar-nav">
+    <div class="container">
+        <div class="row">
+            @* 顶部显示，问候语，登录名 *@
+            <div class="col-md-12">
+                <p style="display: inline-block">便捷购物，幸福生活</p>
+                @if (ViewBag.CustomerName == null)
+                {
+                    <a href="javascript:void(0)" style="float: right" onclick=" $('.loginaccount').css('display', 'block');">亲，请登录</a>
+                    //指示用户是否登录
+                    <input type="hidden" id="accountstats" value="0" />
+                }
+                else
+                {
+                    <p style="display: inline-block; float: right">
+                        <span>尊敬的：@ViewBag.CustomerName[0]&nbsp;</span>
+
+                        <a asp-action="CustomerPage"> 个人界面</a>
+                        <a asp-action="OutLogin"> 退出登录</a>
+                    </p>
+                    <input type="hidden" id="accountstats" value="1" />
+                    <input type="hidden" id="Customer-Number" value="@ViewBag.CustomerNumber" />
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@* 搜索 *@
+<div class="col-12" style="border-bottom: 1px solid rgba(0, 0, 0, 0.26);background-color: #fff">
+    <div class=" container">
+        <div class="row" style="min-height: 127px;">
+            @* logo *@
+            <div class="col-md-3" style="text-align: center;">
+                <a asp-action="Index" title="返回首页">
+                    <img src="~/images/primary/shoppingcar.png" width="100" />
+                </a>
+                <h6 style="color: red; font-weight: bold">Commodity content</h6>
+            </div>
+            @* 搜索框 *@
+            <form asp-action="ShowCommodityOfLike" method="get" class="col-md-7">
+                <div class="row">
+                    <div class="col-md-10">
+                        <input type="text" name="CommoditySearch" id="CommoditySearch" placeholder="继续搜索~" />
+                    </div>
+                    <div class="col-md-2 sreachBtn">
+                        <button type="submit" class="btn" style="margin-top: 39px; width: 80px; background-color: #ff1800; color: #ffffff">
+                            搜索
+                            @* 搜索图标 *@
+                            <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                                <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                            </svg>
+                            @* 搜索图标end *@
+                        </button>
+                    </div>
+                </div>
+            </form>
+            @* 不知道放什么 *@
+            <div class="col-md-2">
+            </div>
+        </div>
+    </div>
+</div>
+
+@* 商品详情展示 *@
+<div class="comcon-title">
+    <div class="container">
+        <a asp-action="Index">网站首页</a>
+        <a asp-action="SellerPage" asp-route-sellername="@Model.ShopName">店铺首页</a>
+        @if (ViewBag.CollectionStats == null)
+        {
+            <a href="javascript:void(0)" onclick="CollectionSeller(this)">收藏店铺</a>
+        }
+        else
+        {
+            @if (ViewBag.CollectionStats)
+            {
+                <a href="javascript:void(0)">已收藏</a>
+            }
+            else
+            {
+                <a href="javascript:void(0)" onclick="CollectionSeller(this)">收藏店铺</a>
+            }
+        }
+       
+        <a href="javascript:void(0)" onclick="toCar()">购物车</a>
+    </div>
+</div>
+
+<div class="container" style="min-height: 450px; margin-top: 40px;">
+    <div class="row">
+        @* 商品的照片显示 *@
+        <div class="col-md-4" style="padding-right:20px;text-align: center">
+            <img src="@Model.CommodityPic[0]" alt="Alternate Text" width="100%" height="100%" style="border: 1px solid #999999" />
+        </div>
+        @* 商品信息展示 *@
+        <div class="col-md-8" style="padding-left: 30px; height: 100%; color: #999999">
+            <span style="color: black">@Model.CommodityName</span>
+
+            <input type="hidden" name="commoditynumber" id="comm-number" value="@Model.CommodityNumber" />
+            <input type="hidden" name="commmodityname" value="@Model.CommodityName" />
+
+            <hr />
+            <span> 价格：<span style="font-size: 23px; color: #F40;font-weight: bold">￥@Model.CommodityPrice</span></span>
+            <input type="hidden" id="comm-money" value="@Model.CommodityPrice" />
+            <span style="float: right; background-color: #F40; color: #ffffff; padding: 10px;">
+                <img src="~/images/primary/deal.png" width="19px" />&nbsp;热度：@Model.CommodityBrowse
+            </span>
+            <br />
+            <hr />
+            <span id="commsize">
+                规格：
+                @foreach (var size in Model.CommoditySize)
+                {
+                    <a href="javascript:void(0)" class="comm-size" onclick="choosesize(this,'@size')">&nbsp;&nbsp;@size&nbsp;&nbsp;</a>
+                }
+            </span>
+            <br />
+            <br />
+            <span id="commcolor">
+                种类：
+                @foreach (var color in Model.CommodityColor)
+                {
+                    <a href="javascript:void(0)" class="comm-size" onclick="choosecolor(this, '@color')">&nbsp;&nbsp;@color&nbsp;&nbsp;</a>
+                }
+            </span>
+            <br />
+            <br />
+            <span>数量：&nbsp;&nbsp;<button id="subtract" class="disbtn" disabled onclick="subtract()">-</button><input id="commcount" type="text" value="" disabled="disabled" class="countinput" /><button onclick="add()" id="add">+</button></span><span>&nbsp;库存：@Model.CommodityInventory</span><input type="hidden" value="@Model.CommodityInventory" id="comminventory" />
+            <br />
+            <br />
+            <br />
+            <br />
+            <button class="nowbuy" style="outline: none;" onclick="nowBuy()">立即购买</button>
+            <button class="addcar" style="outline: none;" onclick="AddCar()">加入购物车</button>
+            <button class="tocar animated fadeInLeft" style="outline: none;display: none" onclick="toCar()">去购物车</button>
+        </div>
+    </div>
+</div>
+<br /><br />
+@* 评论等信息 *@
+<div class="container" style="min-height: 100px; margin-bottom: 20px;">
+    <div class="row">
+        <div class="col-md-4" style="">
+            <div class="card">
+                <div class="card-header">店铺信息</div>
+                <div class="card-body" style="height: 180px;">
+                    <h6 id="shopname">@ViewBag.SellerInfo.ShopName</h6>
+                    <input type="hidden" id="com-shopname" value="@ViewBag.SellerInfo.ShopName" />
+                    <img src="@ViewBag.SellerInfo.SellerLogo" width="100" height="50" style="position: absolute; left: 200px; top: 68px;" />
+                    <a asp-action="SellerPage" asp-route-sellername="@ViewBag.SellerInfo.ShopName" asp-route-sellernumber="@ViewBag.SellerInfo.SellerNumber">进入店铺</a>
+                    <hr />
+                    <h6>浏览量：@ViewBag.SellerInfo.SellerVisit</h6>
+                    <h6>销量：@ViewBag.SellerInfo.SalesVolume</h6>
+                    <input type="hidden" id="seller-number" value="@ViewBag.SellerInfo.SellerNumber" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="container" style="margin-top: 10px; font-size: 12px;">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item ">
+                        <a class="nav-link active" href="javascript:void(0)" onclick="navtabsshow(this,1)">
+                            商品详情
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="javascript:void(0)" onclick="navtabsshow(this,2)">
+                            评论
+                        </a>
+                    </li>
+                </ul>
+                <div class="nav1 navall" style="display: block; ">
+                    <ul style="padding-left: 10px;">
+                        <li class="nav-item showintroduce">
+                            @Model.CommodityIntroduce
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav2 navall" style="display: none;">
+                    <ul style="padding-left: 10px;" id="commentlist">
+
+                        @*<li class="nav-item showcomment row">
+                                <div class="col-md-9" style="line-height: 18px;">中方哈颠三倒四中方哈颠三倒四中方哈颠三倒四中方哈颠三倒四中方哈颠三倒四中方哈颠三倒四中方哈颠三倒四</div>
+                                <div class="col-md-3" style="text-align: center;"><span style="margin: 0; display: block;color: rgba(0,0,0,0.5)">用户C12390234</span></div>
+                            </li>*@
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*登录框*@
+<div class="loginaccount" style="display:none">
+    <div class="col-md-12 ">
+        <div class="loginform col-md-4 animated wow fadeInDown" data-wow-duration="0.5s">
+            <form onsubmit="return Login()" method="post" id="loginform" class="col-md-12">
+                <p style="padding: 0 0 10px 0; font-size: 16px; color: black" id="loginnote">请先登录</p>
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text">登录号</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="登录号" id="custnumber" name="custnumber" maxlength="10">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text">密&ensp;&ensp;码</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="密码" id="custpwd" name="custpwd" maxlength="10">
+                    </div>
+                </div>
+
+                <div class="form-group" style="display: none" id="lostpwd">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text">丢失码</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="丢失码" id="custlostkey" name="custlostkey" maxlength="10">
+                    </div>
+                </div>
+
+                <input type="submit" name="tologin" value="登录" class="btn btn-primary form-control" style="margin: 10px 0" />
+                <input type="reset" id="cancel" name="tologin" value="取消" class="btn btn-primary form-control" style="margin: 10px 0" />
+                <a asp-action="Register">没有帐号？注册一个</a>
+                <br />
+                <a href="javascript:void(0)" onclick="ShowLostPwdKeyText()" id="lostpwdaction">忘记密码</a>
+                <br />
+                <span id="errornote"></span>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
+
+<script>
+    $(() => {
+        {
+
+            //$("#commcount").bind('input propertychange',
+            //    function()
+            //        var val = $(this).val();
+            //        if (isNaN(val)) {
+            //            console.log(1);
+            //            $(this).val("1");
+            //            return;
+            //        }
+            //        if (val < 2) {
+            //            console.log(2);
+            //            $("#subtract").removeAttr("active", ' ');
+            //            $("#subtract").attr("disabled", ' ');
+            //        }
+            //        if (val >= 1) {
+            //            console.log(3);
+            //            $("#subtract").removeAttr("disabled", ' ');
+            //            $("#subtract").attr("active", ' ');
+            //        }
+            //        $(this).val(parseInt($(this).val()));
+            //    });
+        }
+
+        new WOW().init();
+
+        $("#cancel").click(function () {
+            $(".loginaccount").css("display", "none");
+        });
+
+        //添加检查密码格式的自定义规则
+        jQuery.validator.addMethod("CheckPwd",
+            function (value, element) {
+                var pwd = /^\w+$/;
+                return pwd.test(value);
+            },
+            "密码格式为数字字母或下划线");
+
+        //检查登录号
+        jQuery.validator.addMethod("CheckNumber",
+            function (value, element) {
+                var pwd = /^C[0-9]{9}$/;
+                return pwd.test(value);
+            },
+            "帐号格式为C[大写]开头(不包含C)的9位数字");
+
+        $('#loginform').validate({
+            //设置验证失败时存放错误提示的标签
+            errorElement: 'span',
+            //设置标签用到的样式
+            errorClass: 'invalid-feedback',
+            //设置验证用的规则
+            rules: {
+                custnumber: {
+                    required: true,
+                    CheckNumber: true
+                },
+                custpwd: {
+                    required: true,
+                    minlength: 10,
+                    CheckPwd: true
+                }
+            },
+            //设置验证失败的错误提示
+            messages: {
+                custnumber: {
+                    required: "此项必填",
+                    minlength: "密码长度固定为10位"
+                },
+                custpwd: {
+                    required: "此项必填",
+                    minlength: "密码长度固定为10位"
+                }
+            },
+            //验证失败触发的事件
+            errorPlacement: function (error, element) {
+                element.next().remove(); //删除显示图标
+                element.after(
+                    '<span class="glyphicon form-control-feedback invalid-feedback" aria-hidden="true"></span>'
+                );
+                element.parent().append(error);
+            },
+            //设置高亮显示的事件
+            highlight: function (element) {
+                $(element)
+                    .closest('.form-group')
+                    .find('input')
+                    .addClass('is-invalid');
+            },
+            //验证成功的事件
+            success: function (label) {
+                var el = label.closest('.form-group').find('input');
+                el.next().remove(); //与errorPlacement相似
+                el.after('<span class="glyphicon form-control-feedback valid-feedback" aria-hidden="true"></span>');
+                el.removeClass('is-invalid').addClass('is-valid');
+            }
+        });
+        $("#commcount").val("1");
+        GetComment();
+
+        BrowserAdd();
+
+    });
+
+    //点击记密码链接弹出丢失码重改密码
+    function ShowLostPwdKeyText() {
+        if ($("#lostpwdaction").text() === "取消") {
+            $("#custlostkey").val("");
+            $("#lostpwd").css("display", "none");
+            $("#loginnote").text("在此登录");
+            $("#loginpwd").attr("placeholder", "密码");
+            $("#lostpwdaction").text("忘记密码");
+            return;
+        }
+        $("#lostpwd").css("display", "block");
+        $("#loginnote").text("凭丢失码可以直接使用新密码登录");
+        $("#loginpwd").attr("placeholder", "新密码");
+        $("#lostpwdaction").text("取消");
+    }
+
+    //选择大小
+    function choosesize(el, size) {
+        $("#commsize>a").removeClass("set");
+        $(el).addClass("set");
+        commoditySize = size;
+    }
+
+    //选择颜色
+    function choosecolor(el, color) {
+        $("#commcolor>a").removeClass("set");
+        $(el).addClass("set");
+        commodityColor = color;
+    }
+
+    //减少商品数量
+    function subtract() {
+        var maxval = $("#comminventory").val();
+        var val = parseInt($("#commcount").val());
+        $("#commcount").val(val - 1);
+        commodityCount = val - 1;
+        if (val - 1 < 2) {
+            $("#subtract").removeAttr("active", ' ');
+            $("#subtract").attr("disabled", ' ');
+            $("#subtract").addClass("disbtn");
+        }
+        if (val - 1 < maxval) {
+            $("#add").removeAttr("disabled", ' ');
+            $("#add").attr("active", ' ');
+            $("#add").removeClass("disbtn");
+        }
+    }
+
+    //添加商品数量
+    function add() {
+        var maxval = $("#comminventory").val();
+        var val = parseInt($("#commcount").val());
+        $("#commcount").val(val + 1);
+        commodityCount = val + 1;
+        if (val + 1 > 1) {
+            $("#subtract").removeAttr("disabled", ' ');
+            $("#subtract").attr("active", ' ');
+            $("#subtract").removeClass("disbtn");
+        }
+        if (val + 1 == maxval) {
+            $("#add").removeAttr("active", ' ');
+            $("#add").attr("disabled", ' ');
+            $("#add").addClass("disbtn");
+        }
+    }
+
+    //执行购买
+    function nowBuy() {
+        //检查账户是否登录
+        if ($("#accountstats").val() == 0) {
+            console.log(1);
+            $(".loginaccount").css("display", "block");
+            return;
+        }
+        ToBuy();
+    }
+
+    //提交登录
+    function Login() {
+        $.post("ToLogin",
+            {
+                custnumber: $("#custnumber").val(),
+                custpwd: $("#custpwd").val(),
+                custlostkey: $("#lostpwd").val(),
+                stats: "commodity"
+            },
+            (data) => {
+                if (data == 1)
+                    window.location.reload();
+                else
+                    alert("请检查您的登录信息。");
+            }
+        );
+        return false;
+    }
+
+    //获取商品参数
+    var commoditySize = "";
+    var commodityColor = "";
+    var commodityCount = 1;
+
+    //提交订单数据，跳转到订单页
+    function ToBuy() {
+        if (commoditySize==""||commodityColor=="") {
+            alert("您的选择有误！");
+            return;
+        }
+        $.post("AddNewDeal",
+            {
+                custnumber: $("#Customer-Number").val(),
+                commnumber: $("#comm-number").val(),
+                sellernumber: $("#seller-number").val(),
+                commsize:commoditySize,
+                commcolor:commodityColor,
+                commcount:commodityCount,
+                commmoney: $("#comm-money").val()
+            }, (data) => {
+                if (data == true) {
+                    //window.location.href = "DealNotarize?commoditynumber=" + $("#comm-number").val() + "&sellernumber=" + $("#seller-number").val();
+                    post('DealNotarize',
+                        {
+                            commoditynumber: $("#comm-number").val(),
+                            sellernumber: $("#seller-number").val()
+                        });
+                } else
+                {
+                    alert("订单创建失败，服务器繁忙。");
+                }
+            });
+
+    }
+
+    //执行添加到购物车
+    function AddCar() {
+        //检查账户是否登录
+        if ($("#accountstats").val() == 0) {
+            $(".loginaccount").css("display", "block");
+            return;
+        }
+        if (commoditySize == "" || commodityColor == "") {
+            alert("您的选择有误！");
+            return;
+        }
+        $.post("AddNewDeal",
+            {
+                custnumber: $("#Customer-Number").val(),
+                commnumber: $("#comm-number").val(),
+                sellernumber: $("#seller-number").val(),
+                commsize: commoditySize,
+                commcolor: commodityColor,
+                commcount: commodityCount,
+                commmoney: $("#comm-money").val(),
+                istocar:true
+            }, (data) => {
+                if (data == true) {
+                    $(".tocar").css("display", "inline-block");
+                    Addcarsuccess();
+                } else {
+                    alert("订单创建失败，服务器繁忙。");
+                }
+            });
+    }
+
+    //购物车提示方法
+    function Addcarsuccess() {
+        $(".addcar").text("添加成功");
+        setTimeout(() => {
+                $(".addcar").text("继续加购");
+            },
+            2000);
+    }
+
+    //去购物车界面
+    function toCar() {
+        //检查账户是否登录
+        if ($("#accountstats").val() == 0) {
+            $(".loginaccount").css("display", "block");
+            return;
+        }
+        window.location.href = "ShoppingCarPage?commoditynumber=" + $("#comm-number").val() + "&sellernumber=" + $("#seller-number").val();
+    }
+
+    //收藏店铺
+    function CollectionSeller(el) {
+        //检查账户是否登录
+        if ($("#accountstats").val() == 0) {
+            console.log(1);
+            $(".loginaccount").css("display", "block");
+            return;
+        }
+        $.post("CollectionSeller",
+            {
+                shopname: $("#com-shopname").val()
+            },
+            (data) => {
+                if (data) {
+                    console.log(data);
+                    $(el).text("已收藏");
+                } else {
+                    alert("收藏失败");
+                }
+            });
+    }
+
+    //更换显示标签
+    function navtabsshow(e, index) {
+        $(".nav-link").removeClass("active");
+        $(".navall").css("display", "none");
+        $(e).addClass("active");
+        $(".nav" + index).css("display", "block");
+    }
+
+    var page = 1;
+    var low = 0;
+    //获取评论
+    function GetComment() {
+        $.post("GetComments",
+            {
+                sellername: $("#shopname").text(),
+                commditynumber:"@Model.CommodityNumber"
+            },
+            function (data) {
+                var i = 1;
+                if (data == null) {
+                    $("#commentlist").after("<h3>暂无评论</h3>");
+                } else {
+                    data.forEach((el) => {
+                        $("#commentlist").append("<li class=\"nav-item showcomment row\"> <div class=\"col-md-9\" " +
+                            "style=\"line-height: 18px;\">"+el[1]+"</div><div class=\"col-md-3\" style=\"text-align: center;\">" +
+                            "<span style=\"margin: 0; display: block;color: rgba(0,0,0,0.5)\">用户" + el[0] + "</span></div></li>");
+                        if (i == 8) {
+                            $("#commentlist").after("<a id=\"nextpage\" href=\"javascript:void(0)\" class=\"btn btn - danger\" onclick=\"NextPageComment()\"" +
+                                ">下一页</a>");
+                            $("#commentlist").after("<a id=\"nextpage\" href=\"javascript:void(0)\" class=\"btn btn - danger\" onclick=\"PrevPageComment()\"" +
+                                ">上一页</a>");
+                        }
+                        i++;
+                    });
+                    if (i < 8) {
+                        $("#commentlist").append("<li class=\"nav-item showcomment\" style=\"border-bottom:none;text-align: center;\">————已显示所有评论————</li>");
+                    }
+                }
+            });
+        //分页还没做，可以提交数据了，明天将分页做一下，就行了
+    }
+
+    //下一页
+    function NextPageComment() {
+        if (low == 1) {
+            return;
+        }
+        page++;
+        $.post("GetComments",
+            {
+                sellername: $("#shopname").text(),
+                commditynumber: "@Model.CommodityNumber",
+                page:page
+            },
+            function (data) {
+                if (data == null) {
+                    page--;
+                    low = 1;
+                    $("#commentlist").append("<li class=\"nav-item showcomment\" style=\"border-bottom:none;text-align: center;\">————已显示所有评论————</li>");
+                } else {
+                    $("#commentlist").html("");
+                    data.forEach((el) => {
+                        $("#commentlist").append("<li class=\"nav-item showcomment row\"> <div class=\"col-md-9\" " +
+                            "style=\"line-height: 18px;\">"+el[1]+"</div><div class=\"col-md-3\" style=\"text-align: center;\">" +
+                            "<span style=\"margin: 0; display: block;color: rgba(0,0,0,0.5)\">用户"+el[0]+"</span></div></li>");
+                    });
+                }
+            });
+    }
+
+    //上一页
+    function PrevPageComment() {
+        if (page == 1) {
+            alert("当前已是第一页.");
+            return;
+        }
+        page--;
+        $.post("GetComments",
+            {
+                sellername: $("#shopname").text(),
+                commditynumber: "@Model.CommodityNumber",
+                page:page
+            },
+            function (data) {
+                if (data == null) {
+                    page++;
+                    alert("当前已是第一页.");
+                } else {
+                    low = 0;
+                    $("#commentlist").html("");
+                    data.forEach((el) => {
+                        console.log(el);
+                        $("#commentlist").append("<li class=\"nav-item showcomment row\"> <div class=\"col-md-9\" " +
+                            "style=\"line-height: 18px;\">"+el[1]+"</div><div class=\"col-md-3\" style=\"text-align: center;\">" +
+                            "<span style=\"margin: 0; display: block;color: rgba(0,0,0,0.5)\">用户"+el[0]+"</span></div></li>");
+                    });
+                }
+            });
+    }
+
+    //实现post跳转
+    function post(URL, PARAMS) {
+        var temp = document.createElement("form");
+        temp.action = URL;
+        temp.method = "post";
+        temp.style.display = "none";
+        for (var x in PARAMS) {
+            var opt = document.createElement("textarea");
+            opt.name = x;
+            opt.value = PARAMS[x];
+            temp.appendChild(opt);
+        }
+        document.body.appendChild(temp);
+        temp.submit();
+        return temp;
+    }
+
+    //添加浏览量
+    function BrowserAdd() {
+        $.post("BrowserAdd",
+            {
+                commoditynumber:'@Model.CommodityNumber'
+            },
+            () => {});
+    }
+
+</script>

@@ -1,0 +1,73 @@
+﻿@using System.Collections
+
+@model Hashtable
+
+@{
+    ViewData["Title"] = "新闻详情";
+}
+
+<div style="margin:0 auto ;height:600px; width:1280px;margin-top:10px;">
+
+    <div class="po">
+        <div class="nav-content btn-group-vertical" role="group">
+            <div class="nav-class">
+                <ul>
+                    <li class="page-color"><a style="color:white; border-radius:3px;" asp-controller="home" asp-action="GetAllNews" asp-route-pages="@ViewBag.page">&nbsp;<&nbsp;返回首页&nbsp;</a></li>
+                    <li><a asp-controller="home" asp-action="GetClassNews" asp-route-cname="@Model["NewsClass"]">&nbsp;返回上一页&nbsp;</a></li>
+                    <li><a asp-controller="home" asp-action="GetClassNews" asp-route-cname="热点">&nbsp;热点&nbsp;</a></li>
+                    <li><a asp-controller="home" asp-action="GetClassNews" asp-route-cname="时事">&nbsp;时事&nbsp;</a></li>
+                    <li><a asp-controller="home" asp-action="GetClassNews" asp-route-cname="政治">&nbsp;政治&nbsp;</a></li>
+                    <li><a asp-controller="home" asp-action="GetClassNews" asp-route-cname="经济">&nbsp;经济&nbsp;</a></li>
+                    <li><a asp-controller="home" asp-action="GetClassNews" asp-route-cname="文化">&nbsp;文化&nbsp;</a></li>
+                    <li><a asp-controller="home" asp-action="GetClassNews" asp-route-cname="全球">&nbsp;全球&nbsp;</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-news">
+        @* 新闻部分 *@
+        <h1 class="text-center">@Model["NewsTitle"]</h1>
+
+        @* 新闻内容 *@
+        <h4 style="text-indent:2em;"> @Model["NewsContent"]</h4>
+
+        <br />
+        <br />
+        <br />
+        <span style="float:right">@Model["NewsPublishTime"]</span>
+        <br />
+        <hr />
+
+        @* 添加评论 *@
+        <form action="AddComment" method="get">
+            <input hidden="hidden" name="title" value="@Model["NewsTitle"]" />
+            <input hidden="hidden" name="classname" value="@Model["NewsClass"]" />
+            <input hidden="hidden" name="time" value="@Model["NewsPublishTime"]" />
+            <label for="comment">添加评论：</label>
+            <input class="form-control input-lg" name="comment" id="comment" type="text" style="width:900px" placeholder="请在此输入评论..." />
+            <input class="btn btn-light" type="submit" value="添加评论" style="float:right; margin:10px 0" />
+        </form>
+        
+        @* 遍历评论 *@
+        <table class="table table-hover">
+            <tr>
+                <td style="width:85%">所有评论</td>
+                <td>评论时间</td>
+            </tr>
+
+            @* 遍历评论 *@
+            @foreach (var item in ViewBag.Comment)
+            {
+                <tr>
+                    <td>@item["NewsFeedback"]</td>
+                    <td>@item["FeedbackTime"]</td>
+                </tr>
+            }
+        </table>
+
+    </div>
+
+</div>
+
+

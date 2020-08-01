@@ -1,0 +1,429 @@
+﻿
+@{
+    ViewData["Title"] = "SellerBackEnd";
+    int a = 0;
+}
+
+<link href="~/css/seller.css" rel="stylesheet" />
+<link href="~/css/animate.css" rel="stylesheet" />
+<script src="~/js/wow.min.js"></script>
+<style>
+    body {
+        background-color: #fff;
+    }
+</style>
+
+<div class="navbar-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p style="display: inline-block">店铺后台界面</p>
+                <p style="display: inline-block; float: right">
+                    <span>@ViewBag.SellerNumber</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="seller-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10" style="font-size: 25px; font-weight: bold">@ViewBag.SellerName 后台管理界面</div>
+        </div>
+    </div>
+</div>
+
+<div class="container custchange-bg">
+    <div class="row">
+        <div class="card col-md-12" style="border: none;margin-top: 10px;background-color: #F5F5F5">
+            <div class="card-body row">
+                @if (ViewBag.KeywordCommodity != null)
+                {
+                    @foreach (var item in ViewBag.KeywordCommodity)
+                    {
+                        <div class="col-md-3">
+                            <div class="contentbgc contentshowset showoperations" data-id="@a">
+                                <a asp-action="CommodityContentPage" asp-route-commodityname="@item.CommodityName" title="@item.CommodityName">
+
+                                    <img src="@item.CommodityPic[0]" />
+                                </a>
+                                <span class="commodity-money">￥@item.CommodityPrice</span>
+                                <a asp-action="CommodityContentPage" asp-route-commodityname="@item.CommodityName">
+                                    <span class="commodity-title">
+                                        @if (item.CommodityName.Length > 30)
+                                        {
+                                            @item.CommodityName.Substring(0, 30)
+                                        }
+                                        else
+                                        {
+                                            @item.CommodityName
+                                        }
+                                    </span>
+                                </a>
+
+                                <button class="btn btn-danger topoperationup topoperatio animated wow fadeInDown btn-@a" data-wow-duration="0.2s" data-commoditynumber="@item.CommodityNumber">下架</button>
+                                <button class="btn btn-danger topoperationdown topoperatio animated wow fadeInDown btn-@a" data-wow-duration="0.4s" data-commoditynumber="@item.CommodityNumber">修改</button>
+                                <button class="btn btn-danger topoperationdel topoperatio animated wow fadeInDown btn-@a" data-wow-duration="0.6s" data-commoditynumber="@item.CommodityNumber">删除</button>
+
+                            </div>
+                        </div>
+                        a++;
+                    }
+                    //分页
+                    <div class="container">
+                        <div class="newspage">
+                            <ul class="pagination">
+                                @{ int nextPage = (int)ViewBag.CurrentPageCount + 1; int prvepage = (int)ViewBag.CurrentPageCount - 1;}
+                                <li class="page-item" id="firstpageshow"><a class="page-link" asp-action="SellerBackEnd" asp-route-sellername="@ViewBag.SellerName" asp-route-sellernumber="@ViewBag.SellerNumber" asp-route-page="@prvepage">上一页</a></li>
+                                <li class="page-item active" id="currentpageshow"><a class="page-link" href="javascript:void(0);">@ViewBag.CurrentPageCount</a></li>
+
+                                <li class="page-item" id="lastpageshow"><a class="page-link" asp-action="SellerBackEnd" asp-route-sellername="@ViewBag.SellerName" asp-route-sellernumber="@ViewBag.SellerNumber" asp-route-page="@nextPage">下一页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <span>本店铺暂无任何商品</span>
+                }
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="col-md-12">
+        <h5>添加商品</h5>
+        <br />
+        <form asp-action="AddCommodity" id="AddCommodity" onsubmit="return false" method="post" class="col-md-9" style="margin: 0 auto">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text">商品名称</span>
+                        </div>
+                        <input type="text" class="form-control" name="commodityname" id="commodityname" maxlength="100" value="" placeholder="填写商品名称（100字以内）">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text">所属分类</span>
+                        </div>
+                        <select name="commodityclass" id="commodityclass" class="form-control">
+                            @foreach (var item in ViewBag.CommodityClass)
+                            {
+                                <option value="@item[1]" class="form-control">@item[0]</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text">商品规格</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="规格" name="commoditysize" id="commoditysize" maxlength="100" value="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text">商品外观</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="外观" name="commoditycolor" id="commoditycolor" maxlength="500" value="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text">商品库存</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="库存" name="commodityinventory" id="commodityinventory" maxlength="500" value="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text">商品价格</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="价格" name="commodityprice" id="commodityprice" maxlength="500" value="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text">商品介绍</span>
+                        </div>
+                        <textarea class="form-control" placeholder="介绍" name="commodityintroduce" id="commodityintroduce" maxlength="500"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text">展示图片</span>
+                        </div>
+                        <div class="customer-head" style="margin-left: 10px;">
+                            <img src="~/images/primary/commoditynull.png" width="100%" height="100%" id="commodity-pic" />
+                        </div>
+                        <input type="file" name="customerhead" class="uploadpic" id="uploadhead" />
+                        <input type="hidden" id="commoditypic" name="commoditypicdata" value="" />
+                        <input type="hidden" id="picext" name="picext" value="" />
+                        <span id="tips">(点击添加展示图片)</span>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+            <div class="row" style="text-align: center;">
+                <div class="col-md-6"><button type="submit" class="btn btn-danger" id="submitadd">确认添加</button></div>
+                <div class="col-md-6"><a type="button" asp-action="CustomerPage" class="btn btn-danger">返回首页</a></div>
+            </div>
+            <br />
+            <br />
+        </form>
+    </div>
+
+</div>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
+<script>
+
+    var sellernumber = '@ViewBag.SellerNumber';
+    var sellername = unescape('@ViewBag.SellerName'.replace(/&#x/g, '%u').replace(/;/g, ''));
+
+    $(() => {
+    
+        new WOW().init();
+
+        //声明文件读取对象
+        var reader = new FileReader();
+        //当读取到文件后进行赋值
+        reader.onload = function() {
+            $("#commodity-pic").attr("src", this.result);
+            $("#commoditypic").val(this.result);
+        };
+        //当选中文件后进行文件的读取
+        $("#uploadhead").change(function() {
+            var ext = this.files[0].name.split('.');
+            if (ext[ext.length - 1] != 'jpg' && ext[ext.length - 1] != 'jpeg' && ext[ext.length - 1] != 'png') {
+                alert("请选择有效的文件！");
+                return;
+            }
+            $("#picext").val(ext[ext.length - 1]);
+            reader.readAsDataURL(this.files[0]);
+        });
+
+        //检查电话号码格式
+        jQuery.validator.addMethod("CheckInt",
+            function (value, element) {
+                var mobile = /^\d+$/;
+                return mobile.test(value);
+            },
+            "必须为有效数字");
+
+        $('#AddCommodity').validate({
+            //设置验证失败时存放错误提示的标签
+            errorElement: 'span',
+            //设置标签用到的样式
+            errorClass: 'invalid-feedback',
+            //设置验证用的规则
+            rules: {
+                commodityprice: {
+                    required: true,
+                    CheckInt: true
+                },
+                commodityinventory: {
+                    required: true,
+                    CheckInt: true
+                }
+            },
+            //设置验证失败的错误提示
+            messages: {
+                commodityprice: {
+                    required: "此项必填"
+                },
+                commodityinventory: {
+                    required: "此项必填"
+                }
+            },
+            //验证失败触发的事件
+            errorPlacement: function(error, element) {
+                element.next().remove(); //删除显示图标
+                element.after(
+                    '<span class="glyphicon form-control-feedback invalid-feedback" aria-hidden="true"></span>'
+                );
+                element.parent().append(error);
+            },
+            //设置高亮显示的事件
+            highlight: function(element) {
+                $(element)
+                    .closest('.form-group')
+                    .find('input')
+                    .addClass('is-invalid');
+            },
+            //验证成功的事件
+            success: function(label) {
+                var el = label.closest('.form-group').find('input');
+                el.next().remove(); //与errorPlacement相似
+                el.after('<span class="glyphicon form-control-feedback valid-feedback" aria-hidden="true"></span>');
+                el.removeClass('is-invalid').addClass('is-valid');
+            }
+        });
+
+        //执行添加
+        $('#submitadd').click(() => {
+            $.post("AddCommodity",
+                {
+                    commodityname: $('#commodityname').val(),
+                    commodityclass: $('#commodityclass').val(),
+                    commoditysize: $('#commoditysize').val(),
+                    commoditycolor: $('#commoditycolor').val(),
+                    commodityinventory: $('#commodityinventory').val(),
+                    commodityprice: $('#commodityprice').val(),
+                    commodityintroduce: $('#commodityintroduce').val(),
+                    commoditypicdata: $('#commoditypic').val(),
+                    sellernumber: sellernumber,
+                    picext: $('#picext').val()
+                },
+                (data) => {
+                    if (data)
+                        alert('添加成功');
+                    else
+                        alert('添加失败');
+                });
+        });
+
+        PageProvider(@ViewBag.CurrentPageCount, @ViewBag.PageCount);
+
+        $(".showoperations").on('mouseenter',function () {
+            var id = $(this).data("id");
+            $(".btn-" + id).css("display", "inline");
+        });
+        $(".showoperations").on('mouseleave', function () {
+            var id = $(this).data("id");
+            $(".btn-" + id).slideUp(200);
+        });
+
+        //为下架，删除，更新信息绑定事件
+        $(".topoperationup").on('click',function () {
+            var commoditynumber = $(this).data("commoditynumber");
+            DownOrDelCommodity(commoditynumber, false);
+        });
+        $(".topoperationdown").on('click', function () {
+            var commoditynumber = $(this).data("commoditynumber");
+            UpdateCommodityInfo(commoditynumber, true);
+        });
+        $(".topoperationdel").on('click', function () {
+            var commoditynumber = $(this).data("commoditynumber");
+            DownOrDelCommodity(commoditynumber, true);
+        });
+
+    });
+
+    //返回状态
+    function stats() {
+        return $('#AddCommodity').valid();
+    }
+
+    //页码生成器
+    function PageProvider(curpage, allpages ) {
+        //第一次循环 页码的值永远是 当前页-3/-2/-1，配合before
+        for (var i = curpage - 3; i < curpage; i++) {
+            //如果是第一页，上一页不可用
+            if (curpage <= 1) {
+                $("#firstpageshow").addClass("disabled");
+                break;
+            }
+            //如果当前页码小于1，不显示，进行下一次循环
+            if (i < 1)
+                continue;
+            $("#currentpageshow")
+                .before(
+                    "<li class=\"page-item\" id=\"firstpageshow\"><a class=\"page-link\" onclick=\"gotopage("+i+")\" >"+i+"</a></li>");
+        }
+        //加载当前页之后的页码
+        for (var i = 1; i <= 3; i++) {
+            var next = parseInt(curpage) + i;
+            if (allpages == curpage) {
+                $("#lastpageshow").addClass("disabled");
+            }
+            if (next > allpages)
+                break;
+            $("#lastpageshow").before(
+                "<li class=\"page-item\" id=\"firstpageshow\"><a class=\"page-link\" onclick=\"gotopage(" +  next +")\">"+next+"</a></li>");
+        }
+    }
+
+    //页码跳转
+    function gotopage(page) {
+        post("SellerBackEnd",
+            {
+                sellername:sellername,
+                sellernumber:sellernumber,
+                page:page
+            });
+    }
+
+    //实现post跳转
+    function post(URL, PARAMS) {
+        var temp = document.createElement("form");
+        temp.action = URL;
+        temp.method = "post";
+        temp.style.display = "none";
+        for (var x in PARAMS) {
+            var opt = document.createElement("textarea");
+            opt.name = x;
+            opt.value = PARAMS[x];
+            temp.appendChild(opt);
+        }
+        document.body.appendChild(temp);
+        temp.submit();
+        return temp;
+    }
+
+    //更新商品信息
+    function UpdateCommodityInfo(comm) {
+        window.location.href = "SellerCommChangeInfo?commoidtynumber=" + comm+"&sellernumber="+sellernumber;
+    }
+
+    //下架或者删除商品
+    function DownOrDelCommodity(comm,stats) {
+        $.post("DownCommodityOrDel",
+            {
+                commoditynumber:comm,
+                isdel:stats
+            },
+            (data) => {
+                if (data) {
+                    window.location.reload();
+                } else {
+                    alert("操作失败！");
+                }
+            });
+    }
+
+
+</script>

@@ -1,0 +1,16 @@
+E:\C#\实训项目_班级管理系统\Production_ClassManage\Production_ClassManage\bin\Release\Production_ClassManage.exe.config
+E:\C#\实训项目_班级管理系统\Production_ClassManage\Production_ClassManage\bin\Release\Production_ClassManage.exe
+E:\C#\实训项目_班级管理系统\Production_ClassManage\Production_ClassManage\bin\Release\Production_ClassManage.pdb
+E:\C#\实训项目_班级管理系统\Production_ClassManage\Production_ClassManage\bin\Release\ClassManageLiarary.dll
+E:\C#\实训项目_班级管理系统\Production_ClassManage\Production_ClassManage\bin\Release\ClassManageLiarary.pdb
+E:\C#\实训项目_班级管理系统\Production_ClassManage\Production_ClassManage\obj\Release\Production_ClassManage.csprojAssemblyReference.cache
+E:\C#\实训项目_班级管理系统\Production_ClassManage\Production_ClassManage\obj\Release\Production_ClassManage.ChooseCourse.resources
+E:\C#\实训项目_班级管理系统\Production_ClassManage\Production_ClassManage\obj\Release\Production_ClassManage.loginForm.resources
+E:\C#\实训项目_班级管理系统\Production_ClassManage\Production_ClassManage\obj\Release\Production_ClassManage.Properties.Resources.resources
+E:\C#\实训项目_班级管理系统\Production_ClassManage\Production_ClassManage\obj\Release\Production_ClassManage.sginIn.resources
+E:\C#\实训项目_班级管理系统\Production_ClassManage\Production_ClassManage\obj\Release\Production_ClassManage.csproj.GenerateResource.cache
+E:\C#\实训项目_班级管理系统\Production_ClassManage\Production_ClassManage\obj\Release\Production_ClassManage.csproj.CopyComplete
+E:\C#\实训项目_班级管理系统\Production_ClassManage\Production_ClassManage\obj\Release\Production_ClassManage.exe
+E:\C#\实训项目_班级管理系统\Production_ClassManage\Production_ClassManage\obj\Release\Production_ClassManage.pdb
+E:\C#\实训项目_班级管理系统\Production_ClassManage\Production_ClassManage\obj\Release\Production_ClassManage.Form1.resources
+E:\C#\实训项目_班级管理系统\Production_ClassManage\Production_ClassManage\obj\Release\Production_ClassManage.AddCourse.resources

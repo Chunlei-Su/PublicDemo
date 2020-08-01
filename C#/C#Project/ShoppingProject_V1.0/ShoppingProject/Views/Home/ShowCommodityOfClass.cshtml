@@ -1,0 +1,276 @@
+﻿
+@{
+    ViewData["Title"] = "ShowCommodityOfClass";
+}
+
+
+<link href="~/css/index.css" rel="stylesheet" />
+<link href="~/css/animate.css" rel="stylesheet" />
+<script src="~/js/wow.min.js"></script>
+@* 导航 *@
+<div class="navbar-nav">
+    <div class="container">
+        <div class="row">
+            @* 顶部显示，问候语，登录名 *@
+            <div class="col-md-12">
+                <p style="display: inline-block">便捷购物，幸福生活</p>
+                @if (ViewBag.CustomerName == null)
+                {
+                    <a asp-action="Login" style="float: right">亲，请登录</a>
+                }
+                else
+                {
+                    <p style="display: inline-block; float: right">
+                        <span>尊敬的：@ViewBag.CustomerName[0]&nbsp;</span>
+                        <a asp-action="CustomerPage"> 个人界面</a>
+                        <a asp-action="OutLogin"> 退出登录</a>
+                    </p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@* 搜索 *@
+<div class="col-12" style="background-color: #fff">
+    <div class=" container">
+        <div class="row" style="min-height: 127px;">
+            @* logo *@
+            <div class="col-md-3" style="text-align: center;">
+                <a asp-action="Index" title="回到主页">
+                    <img src="~/images/primary/class.png" width="100" />
+                </a>
+                <h6 style="color: red; font-weight: bold">Correct selection</h6>
+            </div>
+            @* 搜索框 *@
+            <form asp-action="ShowCommodityOfLike" method="get" class="col-md-7">
+                <div class="row">
+                    <div class="col-md-10">
+                        <input type="text" name="CommoditySearch" id="CommoditySearch" placeholder="您正在浏览：@ViewBag.SearchKeyWord 您可以在此自定义搜索~" />
+                    </div>
+                    <div class="col-md-2 sreachBtn">
+                        <button type="submit" class="btn" style="margin-top: 39px; width: 80px; background-color: #ff1800; color: #ffffff">
+                            搜索
+                            @* 搜索图标 *@
+                            <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                                <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                            </svg>
+                            @* 搜索图标end *@
+                        </button>
+                    </div>
+                </div>
+            </form>
+            @* 不知道放什么 *@
+            <div class="col-md-2">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <form class="col-md-12 searchorderbox" id="filter" style="padding: 10px 10px">
+        <input type="hidden" name="CommoditySearch" value="@ViewBag.SearchKeyWord" />
+        <input type="hidden" name="currentpage" value="@ViewBag.CurrentPageCount" id="currentpage" />
+        <div class="row">
+            <div class="col-md-1"><strong>筛选：</strong></div>
+            <div class="col-md-9">
+                <label>价格：</label>
+
+                @*使用switch记录筛选*@
+
+                @{string price1 = "";}
+                @{string price2 = "";}
+                @{string price3 = "";}
+                @{string price4 = "";}
+                @{string price5 = "";}
+                @switch (ViewBag.FilterPrice)
+                {
+                    case "0~100":
+                        price1 = "checked=\"checked\"";
+                        break;
+                    case "100~300":
+                        price2 = "checked=\"checked\"";
+                        break;
+                    case "300~1000":
+                        price3 = "checked=\"checked\"";
+                        break;
+                    case "1000+":
+                        price4 = "checked=\"checked\"";
+                        break;
+                    case "all":
+                        price5 = "checked=\"checked\"";
+                        break;
+                }
+
+                <label><input type="radio" name="price" value="0~100" @price1 />&nbsp;0~100之间</label>
+                <label><input type="radio" name="price" value="100~300" @price2 />&nbsp;100~300之间</label>
+                <label><input type="radio" name="price" value="300~1000" @price3 />&nbsp;300~1000之间</label>
+                <label><input type="radio" name="price" value="1000~+" @price4 />&nbsp;1000以上</label>
+                <label><input type="radio" name="price" value="all" @price5 />&nbsp;全部</label>
+
+                @{string browse1 = "";}
+                @{string browse2 = "";}
+                @{string browse3 = "";}
+                @{string browse4 = "";}
+                @{string browse5 = "";}
+                @switch (ViewBag.FilterBrowse)
+                {
+                    case "0~100":
+                        browse1 = "checked=\"checked\"";
+                        break;
+                    case "100~500":
+                        browse2 = "checked=\"checked\"";
+                        break;
+                    case "500~1000":
+                        browse3 = "checked=\"checked\"";
+                        break;
+                    case "1000+":
+                        browse4 = "checked=\"checked\"";
+                        break;
+                    case "all":
+                        browse5 = "checked=\"checked\"";
+                        break;
+                }
+
+                <hr />
+                <label>热度：</label>
+                <label><input type="radio" name="browse" value="0~100" @browse1 />&nbsp;0~100之间</label>
+                <label><input type="radio" name="browse" value="100~500" @browse2 />&nbsp;100~500之间</label>
+                <label><input type="radio" name="browse" value="500~1000" @browse3 />&nbsp;500~1000之间</label>
+                <label><input type="radio" name="browse" value="1000~+" @browse4 />&nbsp;1000以上</label>
+                <label><input type="radio" name="browse" value="all" @browse5 />&nbsp;全部</label>
+                <hr />
+            </div>
+        </div>
+
+        @{string orders1 = "";}
+        @{string orders2 = "";}
+        @{string orders3 = "";}
+        @{string orders4 = "";}
+        @{string orders5 = "";}
+        @switch (ViewBag.FilterOrders)
+        {
+            case "priceasc":
+                orders1 = "checked=\"checked\"";
+                break;
+            case "pricedesc":
+                orders2 = "checked=\"checked\"";
+                break;
+            case "browseasc":
+                orders3 = "checked=\"checked\"";
+                break;
+            case "browsedesc":
+                orders4 = "checked=\"checked\"";
+                break;
+            case "new":
+                orders5 = "checked=\"checked\"";
+                break;
+        }
+
+        <div class="row">
+            <div class="col-md-1"><strong>排序:</strong></div>
+            <div class="col-md-9">
+                <label><input type="radio" name="orders" value="priceasc" @orders1 />&nbsp;价格从低到高</label>
+                <label><input type="radio" name="orders" value="pricedesc" @orders2 />&nbsp;价格从高到低</label>
+                <label><input type="radio" name="orders" value="browseasc" @orders3 />&nbsp;热度从低到高</label>
+                <label><input type="radio" name="orders" value="browsedesc" @orders4 />&nbsp;热度从高到低</label>
+                <label><input type="radio" name="orders" value="new" @orders5 />&nbsp;新品优先</label>
+            </div>
+            <div class="col-md-2"><button onclick="tosubmit(1)" class="btn filterbtn">确认</button></div>
+        </div>
+    </form>
+</div>
+<div class="container" style="min-height: 500px">
+    @if (ViewBag.CommodityCard != null)
+    {
+        <div class="row animated wow fadeInUp">
+            @foreach (var item in ViewBag.CommodityCard)
+            {
+                <div class="col-md-3 ">
+                    <div class="contentbgc contentshowset">
+                        <a asp-action="CommodityContentPage" asp-route-commodityname="@item.CommodityName" title="@item.CommodityName"><img src="@item.CommodityPic[0]" /></a>
+                        <span class="commodity-money">￥@item.CommodityPrice</span>
+                        <a asp-action="CommodityContentPage" asp-route-commodityname="@item.CommodityName"><span class="commodity-title"> @item.CommodityName</span></a>
+                        <a asp-action="SellerPage" asp-route-sellername="@item.ShopName" asp-route-sellernumber="@item.SellerNumber">
+                            <span class="sellername">
+                                <svg class="bi bi-shop-window sellericon" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M3.12 1.175A.5.5 0 0 1 3.5 1h9a.5.5 0 0 1 .38.175l2.759 3.219A1.5 1.5 0 0 1 16 5.37v.13h-1v-.13a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.13H0v-.13a1.5 1.5 0 0 1 .361-.976l2.76-3.22z" />
+                                    <path d="M2.375 6.875c.76 0 1.375-.616 1.375-1.375h1a1.375 1.375 0 0 0 2.75 0h1a1.375 1.375 0 0 0 2.75 0h1a1.375 1.375 0 1 0 2.75 0h1a2.375 2.375 0 0 1-4.25 1.458 2.371 2.371 0 0 1-1.875.917A2.37 2.37 0 0 1 8 6.958a2.37 2.37 0 0 1-1.875.917 2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.5h1c0 .76.616 1.375 1.375 1.375z" />
+                                    <path d="M4.75 5.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm3.75 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm3.75 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM2 8.854V15h12V8.854a3.354 3.354 0 0 0 1-.27V15h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V8.583c.311.14.647.232 1 .271zm0-1.008V7H1v.437c.291.207.632.35 1 .409zm13-.409c-.291.207-.632.35-1 .409V7h1v.437z" />
+                                    <path d="M4 13V9H3v4a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V9h-1v4H4z" />
+                                </svg> &nbsp;<span class="sellericon" style="top: 301px; left: 50px;">@item.ShopName</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            }
+
+        </div>
+    }
+    else
+    {
+        <h5 class="text-center commodity-null">暂无商品，换个关键词或者筛选条件试试吧</h5>
+        <div class="commoditynullbox" style="text-align: center;width: 100%">
+            <img src="~/images/primary/commoditynull.png" />
+        </div>
+
+    }
+
+</div>
+@* 分页 *@
+<div class="container">
+    <div class="newspage">
+        <ul class="pagination">
+            @{ int nextPage = (int)ViewBag.CurrentPageCount + 1; int prvepage = (int)ViewBag.CurrentPageCount - 1;}
+            <li class="page-item" id="firstpageshow"><a class="page-link" onclick="tosubmit(@prvepage)">上一页</a></li>
+            <li class="page-item active" id="currentpageshow"><a class="page-link" href="javascript:void(0);">@ViewBag.CurrentPageCount</a></li>
+
+            <li class="page-item" id="lastpageshow"><a class="page-link" onclick="tosubmit(@nextPage)">下一页</a></li>
+        </ul>
+    </div>
+</div>
+
+<link href="~/css/search.css" rel="stylesheet" />
+<script>
+    //提交信息
+    function tosubmit(page) {
+        $("#currentpage").val(page);
+        $("#filter").submit();
+    }
+
+    $(() => {
+        PageProvider(@ViewBag.CurrentPageCount, @ViewBag.PageCount);
+    });
+
+    //页码生成器
+    function PageProvider(curpage, allpages ) {
+        //第一次循环 页码的值永远是 当前页-3/-2/-1，配合before
+        for (var i = curpage - 3; i < curpage; i++) {
+            //如果是第一页，上一页不可用
+            if (curpage <= 1) {
+                $("#firstpageshow").addClass("disabled");
+                break;
+            }
+            //如果当前页码小于1，不显示，进行下一次循环
+            if (i < 1)
+                continue;
+            $("#currentpageshow")
+                .before(
+                    "<li class=\"page-item\"><a class=\"page-link\" onclick=\"tosubmit("+i+")\">"+i+"</a></li>");
+        }
+        //加载当前页之后的页码
+        for (var i = 1; i <= 3; i++) {
+            var next = parseInt(curpage) + i;
+            if (allpages == curpage) {
+                $("#lastpageshow").addClass("disabled");
+            }
+            if (next > allpages)
+                break;
+            $("#lastpageshow").before(
+                "<li class=\"page-item\"><a class=\"page-link\" onclick=\"tosubmit("+next+")\">"+next+"</a></li>");
+        }
+    }
+
+</script>
+

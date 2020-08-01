@@ -1,0 +1,380 @@
+﻿@{
+    ViewData["Title"] = "Shopping Home";
+}
+<link href="~/css/index.css" rel="stylesheet" />
+<link href="~/css/animate.css" rel="stylesheet" />
+<script src="~/js/wow.min.js"></script>
+@* 导航 *@
+<div class="navbar-nav">
+    <div class="container">
+        <div class="row">
+            @* 顶部显示，问候语，登录名 *@
+            <div class="col-md-12">
+                <p style="display: inline-block">便捷购物，幸福生活</p>
+                @if (ViewBag.CustomerName == null)
+                {
+                    <a asp-action="Login" style="float: right">亲，请登录</a>
+                }
+                else
+                {
+                    <p style="display: inline-block; float: right">
+                        <span>尊敬的：@ViewBag.CustomerName[0]&nbsp;</span>
+
+                        <a asp-action="CustomerPage"> 个人界面</a>
+                        <a asp-action="OutLogin"> 退出登录</a>
+                    </p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@* 搜索 *@
+<div class="col-12" style="border-bottom: 1px solid rgba(0, 0, 0, 0.26);background-color: #fff">
+    <div class=" container">
+        <div class="row" style="min-height: 127px;">
+            @* logo *@
+            <div class="col-md-3" style="text-align: center;">
+                <img src="~/images/primary/indexlogo.png" width="100" />
+                <h6 style="color: red; font-weight: bold">Charles' Shopping-House</h6>
+            </div>
+            @* 搜索框 *@
+            <form asp-action="ShowCommodityOfLike" method="get" class="col-md-7">
+                <div class="row">
+                    <div class="col-md-10">
+                        <input type="text" name="CommoditySearch" id="CommoditySearch" placeholder="在此搜索您想要的宝贝~" />
+                    </div>
+                    <div class="col-md-2 sreachBtn">
+                        <button type="submit" class="btn" style="margin-top: 39px; width: 80px; background-color: #ff1800; color: #ffffff">
+                            搜索
+                            @* 搜索图标 *@
+                            <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                                <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                            </svg>
+                            @* 搜索图标end *@
+                        </button>
+                    </div>
+                </div>
+            </form>
+            @* 不知道放什么 *@
+            <div class="col-md-2">
+            </div>
+        </div>
+    </div>
+</div>
+
+@* 主体展示框 *@
+<div class="container" style="min-height: 700px; margin-top: 10px;">
+    <div class="col-md-12" style="padding: 0;overflow: hidden;">
+        @* 商品展示常驻红框 *@
+        <div class="col-md-12 commodityClassShowBox showclass">
+            <div class="Classtext">商品分类</div>
+            <div class="CommodityClass col-md-12 animated wow flipInX" style="position: absolute; left: 0;">
+                <ul>
+                    @foreach (var item in ViewBag.CommodityClassName)
+                    {
+                        <li> <a asp-action="ShowCommodityOfClass" asp-route-CommoditySearch="@item[0]">@item[0]</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 animated wow fadeInLeft" style="padding-right: 0;padding-top: 10px;">
+                @* 轮播图和覆盖在其上的具体商品分类列表 *@
+                <div id="demo" class="carousel slide col-md-12" data-ride="carousel" style="padding: 0;">
+                    <!-- 指示符 -->
+                    <ul class="carousel-indicators">
+                        <li data-target="#demo" data-slide-to="0" class="active"></li>
+                        <li data-target="#demo" data-slide-to="1"></li>
+                        <li data-target="#demo" data-slide-to="2"></li>
+                    </ul>
+
+                    <!-- 轮播图片 -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="~/images/primary/advertising/advertising1.jpg" />
+                        </div>
+                        <div class="carousel-item ">
+                            <img src="~/images/primary/advertising/advertising2.webp" />
+                        </div>
+                        <div class="carousel-item ">
+                            <img src="~/images/primary/advertising/advertising3.jpg" />
+                        </div>
+                    </div>
+
+                    <!-- 左右切换按钮 -->
+                    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#demo" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+
+                </div>
+            </div>
+            @* 用户信息栏 *@
+            <div class="col-md-4 animated wow fadeInRight" style="margin: 0;margin-top: 10px;">
+                <div class="customerinfo">
+                    <div class="customerinfobox">
+                        @if (ViewBag.CustomerName == null)
+                        {
+                            <img src="~/images/Customerhead/default.png" width="70" height="70" style="margin-left: 10px;" />
+                            <a asp-action="Login" class="customerinout">点击登录</a>
+                        }
+                        else
+                        {
+                            <img src="@ViewBag.CustomerName[1]" width="70" height="70" style="margin-left: 10px;" />
+                            <h5>@ViewBag.CustomerName[0]</h5>
+                            <a asp-action="CustomerPage" class="customerinout1">个人信息</a> <a asp-action="OutLogin" class="customerinout2"> 退出登录</a>
+                        }
+                    </div>
+                    <div class="container" style="margin-top: 10px; font-size: 12px;">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item tabsbgc1">
+                                <a class="nav-link active tabsbgc1" href="javascript:void(0)" onmouseover="navtabsshow(this,1)">
+                                    看新品&nbsp;<svg class="bi bi-arrow-bar-up" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M11.354 5.854a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L8 3.207l2.646 2.647a.5.5 0 0 0 .708 0z" />
+                                        <path fill-rule="evenodd" d="M8 10a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-1 0v6.5a.5.5 0 0 0 .5.5zm-4.8 1.6c0-.22.18-.4.4-.4h8.8a.4.4 0 0 1 0 .8H3.6a.4.4 0 0 1-.4-.4z" />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li class="nav-item tabsbgc2">
+                                <a class="nav-link tabsbgc2" href="javascript:void(0)" onmouseover="navtabsshow(this,2)">
+                                    阅金句&nbsp;<svg class="bi bi-check2-square tabsicon" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+                                        <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z" />
+                                    </svg>&nbsp;
+                                </a>
+                            </li>
+                            <li class="nav-item tabsbgc3">
+                                <a class="nav-link tabsbgc3" href="javascript:void(0)" onmouseover="navtabsshow(this,3)">
+                                    观热搜&nbsp;<svg class="bi bi-cursor tabsicon" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103zM2.25 8.184l3.897 1.67a.5.5 0 0 1 .262.263l1.67 3.897L12.743 3.52 2.25 8.184z" />
+                                    </svg>&nbsp;
+                                </a>
+                            </li>
+                            <li class="nav-item tabsbgc4">
+                                <a class="nav-link tabsbgc4" href="javascript:void(0)" onmouseover="navtabsshow(this,4)">
+                                    公告&nbsp;<svg class="bi bi-window tabsicon" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M14 2H2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zM2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2z" />
+                                        <path fill-rule="evenodd" d="M15 6H1V5h14v1z" />
+                                        <path d="M3 3.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm1.5 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm1.5 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+                                    </svg>&nbsp;
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="nav1 navall" style="display: block;  ">
+                            <ul>
+                                @for (byte i = 0; i < 5; i++)
+                                {
+                                    <li>
+                                        <svg class="bi bi-diamond-half" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098L9.05.435zM8 .989c.127 0 .253.049.35.145l6.516 6.516a.495.495 0 0 1 0 .7L8.35 14.866a.493.493 0 0 1-.35.145V.989z" />
+                                        </svg>&nbsp;<a asp-action="SellerPage" asp-route-sellername="@ViewBag.IndexTabsDataNav1[i,0]" asp-route-sellernumber="@ViewBag.IndexTabsDataNav1[i,3]">@ViewBag.IndexTabsDataNav1[i, 1]</a>
+                                        <br />
+                                        @ViewBag.IndexTabsDataNav1[i, 2]
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="nav2 navall" style="display: none;  ">
+                            <ul>
+                                @for (byte i = 0; i < 5; i++)
+                                {
+                                    <li>
+                                        <span title="@ViewBag.IndexTabsDataNav2[i, 0]">
+                                            @ViewBag.IndexTabsDataNav2[i, 1]
+                                        </span>
+                                        <br />
+                                        <span class="float-right">—— @ViewBag.IndexTabsDataNav2[i, 2]</span>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="nav3 navall" style="display: none; ">
+                            <ul>
+                                @for (byte i = 0; i < 5; i++)
+                                {
+                                    <li>
+                                        <svg class="bi bi-flag" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M3.5 1a.5.5 0 0 1 .5.5v13a.5.5 0 0 1-1 0v-13a.5.5 0 0 1 .5-.5z" />
+                                            <path fill-rule="evenodd" d="M3.762 2.558C4.735 1.909 5.348 1.5 6.5 1.5c.653 0 1.139.325 1.495.562l.032.022c.391.26.646.416.973.416.168 0 .356-.042.587-.126a8.89 8.89 0 0 0 .593-.25c.058-.027.117-.053.18-.08.57-.255 1.278-.544 2.14-.544a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-.5.5c-.638 0-1.18.21-1.734.457l-.159.07c-.22.1-.453.205-.678.287A2.719 2.719 0 0 1 9 9.5c-.653 0-1.139-.325-1.495-.562l-.032-.022c-.391-.26-.646-.416-.973-.416-.833 0-1.218.246-2.223.916a.5.5 0 1 1-.515-.858C4.735 7.909 5.348 7.5 6.5 7.5c.653 0 1.139.325 1.495.562l.032.022c.391.26.646.416.973.416.168 0 .356-.042.587-.126.187-.068.376-.153.593-.25.058-.027.117-.053.18-.08.456-.204 1-.43 1.64-.512V2.543c-.433.074-.83.234-1.234.414l-.159.07c-.22.1-.453.205-.678.287A2.719 2.719 0 0 1 9 3.5c-.653 0-1.139-.325-1.495-.562l-.032-.022c-.391-.26-.646-.416-.973-.416-.833 0-1.218.246-2.223.916a.5.5 0 0 1-.554-.832l.04-.026z" />
+                                        </svg>&nbsp;<strong>Top @(i+1):</strong>
+                                        <a asp-action="CommodityContentPage" asp-route-commodityname="@ViewBag.IndexTabsDataNav3[i]" title="@ViewBag.IndexTabsDataNav3[i]">
+                                            @ViewBag.IndexTabsDataNav3[i]
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="nav4 navall" style="display: none">
+                            <ul>
+                                <li class="noticetitle"> @ViewBag.IndexTabsDataNav4[0]</li>
+                                <li class="noticecontent"> @ViewBag.IndexTabsDataNav4[1]</li>
+                                <li style="border-bottom: none;text-align: right"> @*@ViewBag.IndexTabsDataNav4[2]*@ ——2020.06.20</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--第一栏-->
+        <div class="row animated wow fadeInUp">
+            <div class="col-md-12 contenttitle">
+                <div class="col-md-3 classshowrow">
+                    @ViewBag.CommodityClassName[0][0]
+                </div>
+            </div>
+            @if (ViewBag.CommodityCardFirst != null)
+            {
+                @foreach (var item in ViewBag.CommodityCardFirst)
+                {
+                    <div class="col-md-3 ">
+                        <div class="contentbgc contentshowset">
+                            <a asp-action="CommodityContentPage" asp-route-commodityname="@item.CommodityName" title="@item.CommodityName"><img src="@item.CommodityPic[0]" /></a>
+                            <span class="commodity-money">￥@item.CommodityPrice</span>
+                            <a asp-action="CommodityContentPage" asp-route-commodityname="@item.CommodityName"><span class="commodity-title"> @item.CommodityName</span></a>
+                            <a asp-action="SellerPage" asp-route-sellername="@item.ShopName" asp-route-sellernumber="@item.SellerNumber">
+                                <span class="sellername">
+                                    <svg class="bi bi-shop-window sellericon" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M3.12 1.175A.5.5 0 0 1 3.5 1h9a.5.5 0 0 1 .38.175l2.759 3.219A1.5 1.5 0 0 1 16 5.37v.13h-1v-.13a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.13H0v-.13a1.5 1.5 0 0 1 .361-.976l2.76-3.22z" />
+                                        <path d="M2.375 6.875c.76 0 1.375-.616 1.375-1.375h1a1.375 1.375 0 0 0 2.75 0h1a1.375 1.375 0 0 0 2.75 0h1a1.375 1.375 0 1 0 2.75 0h1a2.375 2.375 0 0 1-4.25 1.458 2.371 2.371 0 0 1-1.875.917A2.37 2.37 0 0 1 8 6.958a2.37 2.37 0 0 1-1.875.917 2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.5h1c0 .76.616 1.375 1.375 1.375z" />
+                                        <path d="M4.75 5.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm3.75 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm3.75 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM2 8.854V15h12V8.854a3.354 3.354 0 0 0 1-.27V15h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V8.583c.311.14.647.232 1 .271zm0-1.008V7H1v.437c.291.207.632.35 1 .409zm13-.409c-.291.207-.632.35-1 .409V7h1v.437z" />
+                                        <path d="M4 13V9H3v4a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V9h-1v4H4z" />
+                                    </svg> &nbsp;<span class="sellericon" style="top: 301px; left: 50px;">@item.ShopName</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <h5 class="marginleft">空空如也</h5>
+            }
+
+        </div>
+        @* 广告位 *@
+        <div class="row animated wow fadeInUp">
+            <img src="~/images/primary/advertising/advertisingone.png" alt="Alternate Text" width="100%" height="120px" />
+        </div>
+        <!--第二栏-->
+        <div class="row animated wow fadeInUp">
+            <div class="col-md-12 contenttitle">
+                <div class="col-md-3 classshowrow">
+                    @ViewBag.CommodityClassName[1][0]
+                </div>
+            </div>
+            @if (ViewBag.CommodityCardFirst != null)
+            {
+                @foreach (var item in ViewBag.CommodityCardSecond)
+                {
+                    <div class="col-md-3 ">
+                        <div class="contentbgc contentshowset">
+                            <a asp-action="CommodityContentPage" asp-route-commodityname="@item.CommodityName" title="@item.CommodityName"><img src="@item.CommodityPic[0]" /></a>
+                            <span class="commodity-money">￥@item.CommodityPrice</span>
+                            <a asp-action="CommodityContentPage" asp-route-commodityname="@item.CommodityName"><span class="commodity-title"> @item.CommodityName</span></a>
+                            <a asp-action="SellerPage" asp-route-sellername="@item.ShopName">
+                                <span class="sellername">
+                                    <svg class="bi bi-shop-window sellericon" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M3.12 1.175A.5.5 0 0 1 3.5 1h9a.5.5 0 0 1 .38.175l2.759 3.219A1.5 1.5 0 0 1 16 5.37v.13h-1v-.13a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.13H0v-.13a1.5 1.5 0 0 1 .361-.976l2.76-3.22z" />
+                                        <path d="M2.375 6.875c.76 0 1.375-.616 1.375-1.375h1a1.375 1.375 0 0 0 2.75 0h1a1.375 1.375 0 0 0 2.75 0h1a1.375 1.375 0 1 0 2.75 0h1a2.375 2.375 0 0 1-4.25 1.458 2.371 2.371 0 0 1-1.875.917A2.37 2.37 0 0 1 8 6.958a2.37 2.37 0 0 1-1.875.917 2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.5h1c0 .76.616 1.375 1.375 1.375z" />
+                                        <path d="M4.75 5.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm3.75 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm3.75 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM2 8.854V15h12V8.854a3.354 3.354 0 0 0 1-.27V15h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V8.583c.311.14.647.232 1 .271zm0-1.008V7H1v.437c.291.207.632.35 1 .409zm13-.409c-.291.207-.632.35-1 .409V7h1v.437z" />
+                                        <path d="M4 13V9H3v4a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V9h-1v4H4z" />
+                                    </svg> &nbsp;<span class="sellericon" style="top: 301px; left: 50px;">@item.ShopName</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <h5 class="marginleft">空空如也</h5>
+            }
+        </div>
+        <!--第三栏-->
+        <div class="row animated wow fadeInUp">
+            <div class="col-md-12 contenttitle">
+                <div class="col-md-3 classshowrow">
+                    @ViewBag.CommodityClassName[3][0]
+                </div>
+            </div>
+        @if (ViewBag.CommodityCardThird != null)
+        {
+            @foreach (var item in ViewBag.CommodityCardThird)
+            {
+                <div class="col-md-3 ">
+                    <div class="contentbgc contentshowset">
+                        <a asp-action="CommodityContentPage" asp-route-commodityname="@item.CommodityName" title="@item.CommodityName"><img src="@item.CommodityPic[0]" /></a>
+                        <span class="commodity-money">￥@item.CommodityPrice</span>
+                        <a asp-action="CommodityContentPage" asp-route-commodityname="@item.CommodityName"><span class="commodity-title"> @item.CommodityName</span></a>
+                        <a asp-action="SellerPage" asp-route-sellername="@item.ShopName">
+                            <span class="sellername">
+                                <svg class="bi bi-shop-window sellericon" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M3.12 1.175A.5.5 0 0 1 3.5 1h9a.5.5 0 0 1 .38.175l2.759 3.219A1.5 1.5 0 0 1 16 5.37v.13h-1v-.13a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.13H0v-.13a1.5 1.5 0 0 1 .361-.976l2.76-3.22z" />
+                                    <path d="M2.375 6.875c.76 0 1.375-.616 1.375-1.375h1a1.375 1.375 0 0 0 2.75 0h1a1.375 1.375 0 0 0 2.75 0h1a1.375 1.375 0 1 0 2.75 0h1a2.375 2.375 0 0 1-4.25 1.458 2.371 2.371 0 0 1-1.875.917A2.37 2.37 0 0 1 8 6.958a2.37 2.37 0 0 1-1.875.917 2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.5h1c0 .76.616 1.375 1.375 1.375z" />
+                                    <path d="M4.75 5.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm3.75 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm3.75 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM2 8.854V15h12V8.854a3.354 3.354 0 0 0 1-.27V15h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V8.583c.311.14.647.232 1 .271zm0-1.008V7H1v.437c.291.207.632.35 1 .409zm13-.409c-.291.207-.632.35-1 .409V7h1v.437z" />
+                                    <path d="M4 13V9H3v4a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V9h-1v4H4z" />
+                                </svg> &nbsp;<span class="sellericon" style="top: 301px; left: 50px;">@item.ShopName</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <h5 class="marginleft">空空如也</h5>
+        }
+        </div>
+        @* 第四栏 *@
+        <div class="row animated wow fadeInUp">
+            <div class="col-md-12 contenttitle">
+                <div class="col-md-3 classshowrow">
+                    @ViewBag.CommodityClassName[6][0]
+                </div>
+            </div>
+        @if (ViewBag.CommodityCardFourth != null)
+        {
+            @foreach (var item in ViewBag.CommodityCardFourth)
+            {
+                <div class="col-md-3 ">
+                    <div class="contentbgc contentshowset">
+                        <a asp-action="CommodityContentPage" asp-route-commodityname="@item.CommodityName" title="@item.CommodityName"><img src="@item.CommodityPic[0]" /></a>
+                        <span class="commodity-money">￥@item.CommodityPrice</span>
+                        <a asp-action="CommodityContentPage" asp-route-commodityname="@item.CommodityName"><span class="commodity-title"> @item.CommodityName</span></a>
+                        <a asp-action="SellerPage" asp-route-sellername="@item.ShopName">
+                            <span class="sellername">
+                                <svg class="bi bi-shop-window sellericon" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M3.12 1.175A.5.5 0 0 1 3.5 1h9a.5.5 0 0 1 .38.175l2.759 3.219A1.5 1.5 0 0 1 16 5.37v.13h-1v-.13a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.13H0v-.13a1.5 1.5 0 0 1 .361-.976l2.76-3.22z" />
+                                    <path d="M2.375 6.875c.76 0 1.375-.616 1.375-1.375h1a1.375 1.375 0 0 0 2.75 0h1a1.375 1.375 0 0 0 2.75 0h1a1.375 1.375 0 1 0 2.75 0h1a2.375 2.375 0 0 1-4.25 1.458 2.371 2.371 0 0 1-1.875.917A2.37 2.37 0 0 1 8 6.958a2.37 2.37 0 0 1-1.875.917 2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.5h1c0 .76.616 1.375 1.375 1.375z" />
+                                    <path d="M4.75 5.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm3.75 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm3.75 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM2 8.854V15h12V8.854a3.354 3.354 0 0 0 1-.27V15h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V8.583c.311.14.647.232 1 .271zm0-1.008V7H1v.437c.291.207.632.35 1 .409zm13-.409c-.291.207-.632.35-1 .409V7h1v.437z" />
+                                    <path d="M4 13V9H3v4a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V9h-1v4H4z" />
+                                </svg> &nbsp;<span class="sellericon" style="top: 301px; left: 50px;">@item.ShopName</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <h5 class="marginleft">空空如也</h5>
+        }
+        </div>
+    </div>
+</div>
+<script src="~/js/jquery.singlePageNav.min.js"></script>
+<script>
+
+    // 设置导航动画
+    $(function () {
+        // 使用wow.js
+        new WOW().init();
+    });
+</script>
+
+<script src="~/js/index.js"></script>

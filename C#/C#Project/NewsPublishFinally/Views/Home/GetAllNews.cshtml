@@ -1,0 +1,132 @@
+﻿@using System.Collections
+
+@model List<Hashtable>
+
+@{
+    ViewData["Title"] = "新闻发布";
+}
+
+
+<div style="margin:0 auto ;height:600px; width:1280px;margin-top:10px; ">
+
+    <div class="po">
+        <div class="nav-content btn-group-vertical" role="group">
+            <input type="button" class="btn btn-lg" style="background-color:rgb(0, 160, 255); color:white;" value="列表导航" />
+
+            <div class="nav-class">
+                <ul>
+                    <li><a asp-controller="home" asp-action="GetClassNews" asp-route-cname="热点">&nbsp;热点&nbsp;</a></li>
+                    <li><a asp-controller="home" asp-action="GetClassNews" asp-route-cname="时事">&nbsp;时事&nbsp;</a></li>
+                    <li><a asp-controller="home" asp-action="GetClassNews" asp-route-cname="政治">&nbsp;政治&nbsp;</a></li>
+                    <li><a asp-controller="home" asp-action="GetClassNews" asp-route-cname="经济">&nbsp;经济&nbsp;</a></li>
+                    <li><a asp-controller="home" asp-action="GetClassNews" asp-route-cname="文化">&nbsp;文化&nbsp;</a></li>
+                    <li><a asp-controller="home" asp-action="GetClassNews" asp-route-cname="全球">&nbsp;全球&nbsp;</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="nav-news ">
+        @* 新闻部分 *@
+        <div class="table-responsive container">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th style="width:30%;">标题</th>
+                        <th style="width:50%;">新闻主要内容</th>
+                        <th style="width:20%;">发布时间</th>
+                    </tr>
+                </thead>
+
+
+                @* 遍历新闻内容 *@
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item["NewsTitle"]</td>
+                        @* 把a标签插入，可以在另一个页面中查看详细信息 *@
+                        <td>
+                            <a asp-controller="home" asp-action="GetNewsContentAndComment" asp-route-title="@item["NewsTitle"]" asp-route-page="@ViewBag.PageActive">
+                                @* 设置内容预览，限制在20个字以内 *@
+                                @for (int i = 0; i < 20; i++)
+                                {
+                                    @item["NewsContent"].ToString()[i];
+
+                                    if (@item["NewsContent"].ToString().Length == i + 1)
+                                    {
+                                        break;
+                                    }
+                                }...
+                            </a>
+                        </td>
+                        <td>@item["NewsPublishTime"]</td>
+                    </tr>
+                }
+            </table>
+        </div>
+        
+
+        @* 后台生成页码，再由JS匹配当前页面的页码高亮显示 *@
+        <ul class="bottom-page" id="pagebottom"  style="display:none;">
+            <li>
+                <a asp-controller="home" asp-action="GetAllNews"
+                   asp-route-pages="1">&nbsp;首页&nbsp;</a>
+            </li>
+            <li>
+                <a asp-controller="home" asp-action="GetAllNews"
+                   asp-route-pages="@ViewBag.Pages[0]">&nbsp;上一页&nbsp;</a>
+            </li>
+            <li>
+                <a id="@ViewBag.Pages[2]" asp-controller="home"
+                   asp-action="GetAllNews"
+                   asp-route-pages="@ViewBag.Pages[2]">@ViewBag.Pages[2]</a>
+            </li>
+            <li>
+                <a id="@ViewBag.Pages[3]" asp-controller="home"
+                   asp-action="GetAllNews"
+                   asp-route-pages="@ViewBag.Pages[3]">@ViewBag.Pages[3]</a>
+            </li>
+            <li>
+                <a id="@ViewBag.Pages[4]" asp-controller="home"
+                   asp-action="GetAllNews"
+                   asp-route-pages="@ViewBag.Pages[4]">@ViewBag.Pages[4]</a>
+            </li>
+            <li>
+                <a id="@ViewBag.Pages[5]" asp-controller="home"
+                   asp-action="GetAllNews"
+                   asp-route-pages="@ViewBag.Pages[5]">@ViewBag.Pages[5]</a>
+            </li>
+            <li style="border:none; margin:10px 0 10px 10px;font-size:20px">
+                ...
+            </li>
+            <li>
+                <a id="@ViewBag.Pages[6]" asp-controller="home"
+                   asp-action="GetAllNews"
+                   asp-route-pages="@ViewBag.Pages[6]">@ViewBag.Pages[6]</a>
+            </li>
+            <li>
+                <a asp-controller="home" asp-action="GetAllNews"
+                   asp-route-pages="@ViewBag.Pages[1]">&nbsp;下一页&nbsp;</a>
+            </li>
+        </ul>
+
+        <ul class="bottom-page" id="pagebottomsecond" style="display:none; margin:0;">
+            <li style="float:left;">
+                <a asp-controller="home" asp-action="GetAllNews"
+                   asp-route-pages="1">&nbsp;首页&nbsp;</a>
+            </li>
+            <li style="float:left;">
+                <a asp-controller="home" asp-action="GetAllNews"
+                   asp-route-pages="@ViewBag.Pages[0]">&nbsp;上一页&nbsp;</a>
+            </li>
+            <li style="float:right;">
+                <a asp-controller="home" asp-action="GetAllNews"
+                   asp-route-pages="@ViewBag.Pages[1]">&nbsp;下一页&nbsp;</a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+

@@ -1,0 +1,5 @@
+E:\C#\实训项目_班级管理系统\Production_ClassManage\ClassManageLiarary\bin\Release\ClassManageLiarary.dll
+E:\C#\实训项目_班级管理系统\Production_ClassManage\ClassManageLiarary\bin\Release\ClassManageLiarary.pdb
+E:\C#\实训项目_班级管理系统\Production_ClassManage\ClassManageLiarary\obj\Release\ClassManageLiarary.csprojAssemblyReference.cache
+E:\C#\实训项目_班级管理系统\Production_ClassManage\ClassManageLiarary\obj\Release\ClassManageLiarary.dll
+E:\C#\实训项目_班级管理系统\Production_ClassManage\ClassManageLiarary\obj\Release\ClassManageLiarary.pdb
