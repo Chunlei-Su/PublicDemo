@@ -1,0 +1,7 @@
+E:\.Net\C#初级程序\Event_事件\CustomerEventDefind\bin\Debug\CustomerEventDefind.exe.config
+E:\.Net\C#初级程序\Event_事件\CustomerEventDefind\bin\Debug\CustomerEventDefind.exe
+E:\.Net\C#初级程序\Event_事件\CustomerEventDefind\bin\Debug\CustomerEventDefind.pdb
+E:\.Net\C#初级程序\Event_事件\CustomerEventDefind\obj\Debug\CustomerEventDefind.csproj.CoreCompileInputs.cache
+E:\.Net\C#初级程序\Event_事件\CustomerEventDefind\obj\Debug\CustomerEventDefind.exe
+E:\.Net\C#初级程序\Event_事件\CustomerEventDefind\obj\Debug\CustomerEventDefind.pdb
+E:\.Net\C#初级程序\Event_事件\CustomerEventDefind\obj\Debug\CustomerEventDefind.csprojAssemblyReference.cache

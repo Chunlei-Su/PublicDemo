@@ -1,0 +1,116 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\.Net\\C#程序\\C#高级\\ReflectionAndPlug_in_Demo\\ReflectionAndPlug_in_Demo\\ReflectionAndPlug_in_Demo.csproj": {}
+  },
+  "projects": {
+    "E:\\.Net\\C#程序\\C#高级\\ReflectionAndPlug_in_Demo\\BabyStroller.SDK\\BabyStroller.SDK.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\.Net\\C#程序\\C#高级\\ReflectionAndPlug_in_Demo\\BabyStroller.SDK\\BabyStroller.SDK.csproj",
+        "projectName": "BabyStroller.SDK",
+        "projectPath": "E:\\.Net\\C#程序\\C#高级\\ReflectionAndPlug_in_Demo\\BabyStroller.SDK\\BabyStroller.SDK.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "E:\\.Net\\C#程序\\C#高级\\ReflectionAndPlug_in_Demo\\BabyStroller.SDK\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\.Net\\C#程序\\C#高级\\ReflectionAndPlug_in_Demo\\ReflectionAndPlug_in_Demo\\ReflectionAndPlug_in_Demo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\.Net\\C#程序\\C#高级\\ReflectionAndPlug_in_Demo\\ReflectionAndPlug_in_Demo\\ReflectionAndPlug_in_Demo.csproj",
+        "projectName": "ReflectionAndPlug_in_Demo",
+        "projectPath": "E:\\.Net\\C#程序\\C#高级\\ReflectionAndPlug_in_Demo\\ReflectionAndPlug_in_Demo\\ReflectionAndPlug_in_Demo.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "E:\\.Net\\C#程序\\C#高级\\ReflectionAndPlug_in_Demo\\ReflectionAndPlug_in_Demo\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "E:\\.Net\\C#程序\\C#高级\\ReflectionAndPlug_in_Demo\\BabyStroller.SDK\\BabyStroller.SDK.csproj": {
+                "projectPath": "E:\\.Net\\C#程序\\C#高级\\ReflectionAndPlug_in_Demo\\BabyStroller.SDK\\BabyStroller.SDK.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

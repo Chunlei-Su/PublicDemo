@@ -1,0 +1,7 @@
+E:\.Net\C#初级程序\Event_事件\EventDemo2\bin\Debug\EventDemo2.exe.config
+E:\.Net\C#初级程序\Event_事件\EventDemo2\bin\Debug\EventDemo2.exe
+E:\.Net\C#初级程序\Event_事件\EventDemo2\bin\Debug\EventDemo2.pdb
+E:\.Net\C#初级程序\Event_事件\EventDemo2\obj\Debug\EventDemo2.csprojAssemblyReference.cache
+E:\.Net\C#初级程序\Event_事件\EventDemo2\obj\Debug\EventDemo2.csproj.CoreCompileInputs.cache
+E:\.Net\C#初级程序\Event_事件\EventDemo2\obj\Debug\EventDemo2.exe
+E:\.Net\C#初级程序\Event_事件\EventDemo2\obj\Debug\EventDemo2.pdb

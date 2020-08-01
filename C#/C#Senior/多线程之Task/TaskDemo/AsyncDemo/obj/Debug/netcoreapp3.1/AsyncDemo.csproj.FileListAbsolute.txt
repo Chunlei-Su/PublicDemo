@@ -1,0 +1,13 @@
+E:\.Net\vs程序\多线程之Task\TaskDemo\AsyncDemo\bin\Debug\netcoreapp3.1\AsyncDemo.exe
+E:\.Net\vs程序\多线程之Task\TaskDemo\AsyncDemo\bin\Debug\netcoreapp3.1\AsyncDemo.deps.json
+E:\.Net\vs程序\多线程之Task\TaskDemo\AsyncDemo\bin\Debug\netcoreapp3.1\AsyncDemo.runtimeconfig.json
+E:\.Net\vs程序\多线程之Task\TaskDemo\AsyncDemo\bin\Debug\netcoreapp3.1\AsyncDemo.runtimeconfig.dev.json
+E:\.Net\vs程序\多线程之Task\TaskDemo\AsyncDemo\bin\Debug\netcoreapp3.1\AsyncDemo.dll
+E:\.Net\vs程序\多线程之Task\TaskDemo\AsyncDemo\bin\Debug\netcoreapp3.1\AsyncDemo.pdb
+E:\.Net\vs程序\多线程之Task\TaskDemo\AsyncDemo\obj\Debug\netcoreapp3.1\AsyncDemo.csprojAssemblyReference.cache
+E:\.Net\vs程序\多线程之Task\TaskDemo\AsyncDemo\obj\Debug\netcoreapp3.1\AsyncDemo.csproj.CoreCompileInputs.cache
+E:\.Net\vs程序\多线程之Task\TaskDemo\AsyncDemo\obj\Debug\netcoreapp3.1\AsyncDemo.AssemblyInfoInputs.cache
+E:\.Net\vs程序\多线程之Task\TaskDemo\AsyncDemo\obj\Debug\netcoreapp3.1\AsyncDemo.AssemblyInfo.cs
+E:\.Net\vs程序\多线程之Task\TaskDemo\AsyncDemo\obj\Debug\netcoreapp3.1\AsyncDemo.dll
+E:\.Net\vs程序\多线程之Task\TaskDemo\AsyncDemo\obj\Debug\netcoreapp3.1\AsyncDemo.pdb
+E:\.Net\vs程序\多线程之Task\TaskDemo\AsyncDemo\obj\Debug\netcoreapp3.1\AsyncDemo.genruntimeconfig.cache

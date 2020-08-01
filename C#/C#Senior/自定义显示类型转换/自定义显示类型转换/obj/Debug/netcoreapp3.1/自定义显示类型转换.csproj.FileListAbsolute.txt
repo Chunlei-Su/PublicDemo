@@ -1,0 +1,13 @@
+E:\.Net\C#初级程序\自定义显示类型转换\自定义显示类型转换\bin\Debug\netcoreapp3.1\自定义显示类型转换.exe
+E:\.Net\C#初级程序\自定义显示类型转换\自定义显示类型转换\bin\Debug\netcoreapp3.1\自定义显示类型转换.deps.json
+E:\.Net\C#初级程序\自定义显示类型转换\自定义显示类型转换\bin\Debug\netcoreapp3.1\自定义显示类型转换.runtimeconfig.json
+E:\.Net\C#初级程序\自定义显示类型转换\自定义显示类型转换\bin\Debug\netcoreapp3.1\自定义显示类型转换.runtimeconfig.dev.json
+E:\.Net\C#初级程序\自定义显示类型转换\自定义显示类型转换\bin\Debug\netcoreapp3.1\自定义显示类型转换.dll
+E:\.Net\C#初级程序\自定义显示类型转换\自定义显示类型转换\bin\Debug\netcoreapp3.1\自定义显示类型转换.pdb
+E:\.Net\C#初级程序\自定义显示类型转换\自定义显示类型转换\obj\Debug\netcoreapp3.1\自定义显示类型转换.csprojAssemblyReference.cache
+E:\.Net\C#初级程序\自定义显示类型转换\自定义显示类型转换\obj\Debug\netcoreapp3.1\自定义显示类型转换.csproj.CoreCompileInputs.cache
+E:\.Net\C#初级程序\自定义显示类型转换\自定义显示类型转换\obj\Debug\netcoreapp3.1\自定义显示类型转换.AssemblyInfoInputs.cache
+E:\.Net\C#初级程序\自定义显示类型转换\自定义显示类型转换\obj\Debug\netcoreapp3.1\自定义显示类型转换.AssemblyInfo.cs
+E:\.Net\C#初级程序\自定义显示类型转换\自定义显示类型转换\obj\Debug\netcoreapp3.1\自定义显示类型转换.dll
+E:\.Net\C#初级程序\自定义显示类型转换\自定义显示类型转换\obj\Debug\netcoreapp3.1\自定义显示类型转换.pdb
+E:\.Net\C#初级程序\自定义显示类型转换\自定义显示类型转换\obj\Debug\netcoreapp3.1\自定义显示类型转换.genruntimeconfig.cache

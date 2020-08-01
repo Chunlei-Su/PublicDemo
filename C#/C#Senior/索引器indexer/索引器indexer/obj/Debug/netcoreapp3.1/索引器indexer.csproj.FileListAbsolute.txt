@@ -1,0 +1,13 @@
+E:\.Net\C#初级程序\索引器indexer\索引器indexer\bin\Debug\netcoreapp3.1\索引器indexer.exe
+E:\.Net\C#初级程序\索引器indexer\索引器indexer\bin\Debug\netcoreapp3.1\索引器indexer.deps.json
+E:\.Net\C#初级程序\索引器indexer\索引器indexer\bin\Debug\netcoreapp3.1\索引器indexer.runtimeconfig.json
+E:\.Net\C#初级程序\索引器indexer\索引器indexer\bin\Debug\netcoreapp3.1\索引器indexer.runtimeconfig.dev.json
+E:\.Net\C#初级程序\索引器indexer\索引器indexer\bin\Debug\netcoreapp3.1\索引器indexer.dll
+E:\.Net\C#初级程序\索引器indexer\索引器indexer\bin\Debug\netcoreapp3.1\索引器indexer.pdb
+E:\.Net\C#初级程序\索引器indexer\索引器indexer\obj\Debug\netcoreapp3.1\索引器indexer.csprojAssemblyReference.cache
+E:\.Net\C#初级程序\索引器indexer\索引器indexer\obj\Debug\netcoreapp3.1\索引器indexer.csproj.CoreCompileInputs.cache
+E:\.Net\C#初级程序\索引器indexer\索引器indexer\obj\Debug\netcoreapp3.1\索引器indexer.AssemblyInfoInputs.cache
+E:\.Net\C#初级程序\索引器indexer\索引器indexer\obj\Debug\netcoreapp3.1\索引器indexer.AssemblyInfo.cs
+E:\.Net\C#初级程序\索引器indexer\索引器indexer\obj\Debug\netcoreapp3.1\索引器indexer.dll
+E:\.Net\C#初级程序\索引器indexer\索引器indexer\obj\Debug\netcoreapp3.1\索引器indexer.pdb
+E:\.Net\C#初级程序\索引器indexer\索引器indexer\obj\Debug\netcoreapp3.1\索引器indexer.genruntimeconfig.cache

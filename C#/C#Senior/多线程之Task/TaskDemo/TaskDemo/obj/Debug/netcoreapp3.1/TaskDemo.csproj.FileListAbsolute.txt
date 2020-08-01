@@ -1,0 +1,12 @@
+E:\.Net\vs程序\多线程之Task\TaskDemo\TaskDemo\bin\Debug\netcoreapp3.1\TaskDemo.exe
+E:\.Net\vs程序\多线程之Task\TaskDemo\TaskDemo\bin\Debug\netcoreapp3.1\TaskDemo.deps.json
+E:\.Net\vs程序\多线程之Task\TaskDemo\TaskDemo\bin\Debug\netcoreapp3.1\TaskDemo.runtimeconfig.json
+E:\.Net\vs程序\多线程之Task\TaskDemo\TaskDemo\bin\Debug\netcoreapp3.1\TaskDemo.runtimeconfig.dev.json
+E:\.Net\vs程序\多线程之Task\TaskDemo\TaskDemo\bin\Debug\netcoreapp3.1\TaskDemo.dll
+E:\.Net\vs程序\多线程之Task\TaskDemo\TaskDemo\bin\Debug\netcoreapp3.1\TaskDemo.pdb
+E:\.Net\vs程序\多线程之Task\TaskDemo\TaskDemo\obj\Debug\netcoreapp3.1\TaskDemo.csproj.CoreCompileInputs.cache
+E:\.Net\vs程序\多线程之Task\TaskDemo\TaskDemo\obj\Debug\netcoreapp3.1\TaskDemo.AssemblyInfoInputs.cache
+E:\.Net\vs程序\多线程之Task\TaskDemo\TaskDemo\obj\Debug\netcoreapp3.1\TaskDemo.AssemblyInfo.cs
+E:\.Net\vs程序\多线程之Task\TaskDemo\TaskDemo\obj\Debug\netcoreapp3.1\TaskDemo.dll
+E:\.Net\vs程序\多线程之Task\TaskDemo\TaskDemo\obj\Debug\netcoreapp3.1\TaskDemo.pdb
+E:\.Net\vs程序\多线程之Task\TaskDemo\TaskDemo\obj\Debug\netcoreapp3.1\TaskDemo.genruntimeconfig.cache

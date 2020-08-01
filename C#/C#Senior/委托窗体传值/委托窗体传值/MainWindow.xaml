@@ -1,0 +1,15 @@
+﻿<Window x:Class="委托窗体传值.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:委托窗体传值"
+        mc:Ignorable="d"
+        Title="委托窗体传值" Height="364.151" Width="656.604">
+    <Grid>
+        <Label x:Name="label" Content="接收到的数据：" HorizontalAlignment="Left" Margin="141,175,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="258,175,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="234" />
+        <Button x:Name="button" Content="打开子窗口" HorizontalAlignment="Left" Margin="141,79,0,0" VerticalAlignment="Top" Width="86" Height="27" Click="button_Click"/>
+
+    </Grid>
+</Window>

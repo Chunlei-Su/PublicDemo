@@ -1,0 +1,13 @@
+E:\.Net\C#程序\C#高级\Variance(变体)\Variance(变体)\bin\Debug\netcoreapp3.1\Variance(变体).exe
+E:\.Net\C#程序\C#高级\Variance(变体)\Variance(变体)\bin\Debug\netcoreapp3.1\Variance(变体).deps.json
+E:\.Net\C#程序\C#高级\Variance(变体)\Variance(变体)\bin\Debug\netcoreapp3.1\Variance(变体).runtimeconfig.json
+E:\.Net\C#程序\C#高级\Variance(变体)\Variance(变体)\bin\Debug\netcoreapp3.1\Variance(变体).runtimeconfig.dev.json
+E:\.Net\C#程序\C#高级\Variance(变体)\Variance(变体)\bin\Debug\netcoreapp3.1\Variance(变体).dll
+E:\.Net\C#程序\C#高级\Variance(变体)\Variance(变体)\bin\Debug\netcoreapp3.1\Variance(变体).pdb
+E:\.Net\C#程序\C#高级\Variance(变体)\Variance(变体)\obj\Debug\netcoreapp3.1\Variance(变体).csprojAssemblyReference.cache
+E:\.Net\C#程序\C#高级\Variance(变体)\Variance(变体)\obj\Debug\netcoreapp3.1\Variance(变体).AssemblyInfoInputs.cache
+E:\.Net\C#程序\C#高级\Variance(变体)\Variance(变体)\obj\Debug\netcoreapp3.1\Variance(变体).AssemblyInfo.cs
+E:\.Net\C#程序\C#高级\Variance(变体)\Variance(变体)\obj\Debug\netcoreapp3.1\Variance(变体).csproj.CoreCompileInputs.cache
+E:\.Net\C#程序\C#高级\Variance(变体)\Variance(变体)\obj\Debug\netcoreapp3.1\Variance(变体).dll
+E:\.Net\C#程序\C#高级\Variance(变体)\Variance(变体)\obj\Debug\netcoreapp3.1\Variance(变体).pdb
+E:\.Net\C#程序\C#高级\Variance(变体)\Variance(变体)\obj\Debug\netcoreapp3.1\Variance(变体).genruntimeconfig.cache

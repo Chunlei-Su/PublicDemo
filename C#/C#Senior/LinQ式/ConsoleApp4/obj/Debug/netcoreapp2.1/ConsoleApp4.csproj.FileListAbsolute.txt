@@ -1,0 +1,10 @@
+G:\vs程序\ConsoleApp4\ConsoleApp4\bin\Debug\netcoreapp2.1\ConsoleApp4.deps.json
+G:\vs程序\ConsoleApp4\ConsoleApp4\bin\Debug\netcoreapp2.1\ConsoleApp4.runtimeconfig.json
+G:\vs程序\ConsoleApp4\ConsoleApp4\bin\Debug\netcoreapp2.1\ConsoleApp4.runtimeconfig.dev.json
+G:\vs程序\ConsoleApp4\ConsoleApp4\bin\Debug\netcoreapp2.1\ConsoleApp4.dll
+G:\vs程序\ConsoleApp4\ConsoleApp4\bin\Debug\netcoreapp2.1\ConsoleApp4.pdb
+G:\vs程序\ConsoleApp4\ConsoleApp4\obj\Debug\netcoreapp2.1\ConsoleApp4.csproj.CoreCompileInputs.cache
+G:\vs程序\ConsoleApp4\ConsoleApp4\obj\Debug\netcoreapp2.1\ConsoleApp4.AssemblyInfoInputs.cache
+G:\vs程序\ConsoleApp4\ConsoleApp4\obj\Debug\netcoreapp2.1\ConsoleApp4.AssemblyInfo.cs
+G:\vs程序\ConsoleApp4\ConsoleApp4\obj\Debug\netcoreapp2.1\ConsoleApp4.dll
+G:\vs程序\ConsoleApp4\ConsoleApp4\obj\Debug\netcoreapp2.1\ConsoleApp4.pdb

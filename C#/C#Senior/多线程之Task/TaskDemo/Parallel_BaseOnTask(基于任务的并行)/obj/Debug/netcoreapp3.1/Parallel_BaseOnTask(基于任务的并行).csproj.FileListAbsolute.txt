@@ -1,0 +1,13 @@
+E:\.Net\vs程序\多线程之Task\TaskDemo\Parallel_BaseOnTask(基于任务的并行)\bin\Debug\netcoreapp3.1\Parallel_BaseOnTask(基于任务的并行).exe
+E:\.Net\vs程序\多线程之Task\TaskDemo\Parallel_BaseOnTask(基于任务的并行)\bin\Debug\netcoreapp3.1\Parallel_BaseOnTask(基于任务的并行).deps.json
+E:\.Net\vs程序\多线程之Task\TaskDemo\Parallel_BaseOnTask(基于任务的并行)\bin\Debug\netcoreapp3.1\Parallel_BaseOnTask(基于任务的并行).runtimeconfig.json
+E:\.Net\vs程序\多线程之Task\TaskDemo\Parallel_BaseOnTask(基于任务的并行)\bin\Debug\netcoreapp3.1\Parallel_BaseOnTask(基于任务的并行).runtimeconfig.dev.json
+E:\.Net\vs程序\多线程之Task\TaskDemo\Parallel_BaseOnTask(基于任务的并行)\bin\Debug\netcoreapp3.1\Parallel_BaseOnTask(基于任务的并行).dll
+E:\.Net\vs程序\多线程之Task\TaskDemo\Parallel_BaseOnTask(基于任务的并行)\bin\Debug\netcoreapp3.1\Parallel_BaseOnTask(基于任务的并行).pdb
+E:\.Net\vs程序\多线程之Task\TaskDemo\Parallel_BaseOnTask(基于任务的并行)\obj\Debug\netcoreapp3.1\Parallel_BaseOnTask(基于任务的并行).csprojAssemblyReference.cache
+E:\.Net\vs程序\多线程之Task\TaskDemo\Parallel_BaseOnTask(基于任务的并行)\obj\Debug\netcoreapp3.1\Parallel_BaseOnTask(基于任务的并行).csproj.CoreCompileInputs.cache
+E:\.Net\vs程序\多线程之Task\TaskDemo\Parallel_BaseOnTask(基于任务的并行)\obj\Debug\netcoreapp3.1\Parallel_BaseOnTask(基于任务的并行).AssemblyInfoInputs.cache
+E:\.Net\vs程序\多线程之Task\TaskDemo\Parallel_BaseOnTask(基于任务的并行)\obj\Debug\netcoreapp3.1\Parallel_BaseOnTask(基于任务的并行).AssemblyInfo.cs
+E:\.Net\vs程序\多线程之Task\TaskDemo\Parallel_BaseOnTask(基于任务的并行)\obj\Debug\netcoreapp3.1\Parallel_BaseOnTask(基于任务的并行).dll
+E:\.Net\vs程序\多线程之Task\TaskDemo\Parallel_BaseOnTask(基于任务的并行)\obj\Debug\netcoreapp3.1\Parallel_BaseOnTask(基于任务的并行).pdb
+E:\.Net\vs程序\多线程之Task\TaskDemo\Parallel_BaseOnTask(基于任务的并行)\obj\Debug\netcoreapp3.1\Parallel_BaseOnTask(基于任务的并行).genruntimeconfig.cache

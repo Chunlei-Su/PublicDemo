@@ -1,0 +1,16 @@
+﻿<Window x:Class="线程与委托.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:线程与委托"
+        mc:Ignorable="d"
+        Title="线程与委托" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="button" Content="后台线程开始" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="122" Height="29" Click="button_Click"/>
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="142" Margin="167,10,0,0" VerticalAlignment="Top" Width="600"/>
+        <Button x:Name="button1" Content="委托调用方法参数" HorizontalAlignment="Left" Margin="10,205,0,0" VerticalAlignment="Top" Width="122" Height="38" Click="button1_Click"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="137" Margin="167,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="600"/>
+
+    </Grid>
+</Window>

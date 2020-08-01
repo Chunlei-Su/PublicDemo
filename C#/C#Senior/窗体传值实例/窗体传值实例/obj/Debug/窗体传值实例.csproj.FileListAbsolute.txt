@@ -1,0 +1,16 @@
+C:\Users\17965\Desktop\窗体传值实例\窗体传值实例\bin\Debug\窗体传值实例.exe.config
+C:\Users\17965\Desktop\窗体传值实例\窗体传值实例\bin\Debug\窗体传值实例.exe
+C:\Users\17965\Desktop\窗体传值实例\窗体传值实例\bin\Debug\窗体传值实例.pdb
+C:\Users\17965\Desktop\窗体传值实例\窗体传值实例\obj\Debug\窗体传值实例.csprojAssemblyReference.cache
+C:\Users\17965\Desktop\窗体传值实例\窗体传值实例\obj\Debug\ChildWin.g.cs
+C:\Users\17965\Desktop\窗体传值实例\窗体传值实例\obj\Debug\MainWindow.g.cs
+C:\Users\17965\Desktop\窗体传值实例\窗体传值实例\obj\Debug\App.g.cs
+C:\Users\17965\Desktop\窗体传值实例\窗体传值实例\obj\Debug\窗体传值实例_MarkupCompile.cache
+C:\Users\17965\Desktop\窗体传值实例\窗体传值实例\obj\Debug\窗体传值实例_MarkupCompile.lref
+C:\Users\17965\Desktop\窗体传值实例\窗体传值实例\obj\Debug\ChildWin.baml
+C:\Users\17965\Desktop\窗体传值实例\窗体传值实例\obj\Debug\MainWindow.baml
+C:\Users\17965\Desktop\窗体传值实例\窗体传值实例\obj\Debug\窗体传值实例.g.resources
+C:\Users\17965\Desktop\窗体传值实例\窗体传值实例\obj\Debug\窗体传值实例.Properties.Resources.resources
+C:\Users\17965\Desktop\窗体传值实例\窗体传值实例\obj\Debug\窗体传值实例.csproj.GenerateResource.cache
+C:\Users\17965\Desktop\窗体传值实例\窗体传值实例\obj\Debug\窗体传值实例.exe
+C:\Users\17965\Desktop\窗体传值实例\窗体传值实例\obj\Debug\窗体传值实例.pdb

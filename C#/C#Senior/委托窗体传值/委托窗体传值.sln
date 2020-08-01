@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29409.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "委托窗体传值", "委托窗体传值\委托窗体传值.csproj", "{DE63D8A3-EBFD-482D-8703-7288526D5EDE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE63D8A3-EBFD-482D-8703-7288526D5EDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE63D8A3-EBFD-482D-8703-7288526D5EDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE63D8A3-EBFD-482D-8703-7288526D5EDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE63D8A3-EBFD-482D-8703-7288526D5EDE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {09979352-E8F4-4A27-BCD9-54F0565049DD}
+	EndGlobalSection
+EndGlobal

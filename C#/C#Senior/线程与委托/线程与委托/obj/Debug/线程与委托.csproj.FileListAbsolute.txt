@@ -1,0 +1,14 @@
+E:\C#\vs程序\线程与委托\线程与委托\bin\Debug\线程与委托.exe.config
+E:\C#\vs程序\线程与委托\线程与委托\bin\Debug\线程与委托.exe
+E:\C#\vs程序\线程与委托\线程与委托\bin\Debug\线程与委托.pdb
+E:\C#\vs程序\线程与委托\线程与委托\obj\Debug\线程与委托.csprojAssemblyReference.cache
+E:\C#\vs程序\线程与委托\线程与委托\obj\Debug\MainWindow.g.cs
+E:\C#\vs程序\线程与委托\线程与委托\obj\Debug\App.g.cs
+E:\C#\vs程序\线程与委托\线程与委托\obj\Debug\线程与委托_MarkupCompile.cache
+E:\C#\vs程序\线程与委托\线程与委托\obj\Debug\线程与委托_MarkupCompile.lref
+E:\C#\vs程序\线程与委托\线程与委托\obj\Debug\MainWindow.baml
+E:\C#\vs程序\线程与委托\线程与委托\obj\Debug\线程与委托.g.resources
+E:\C#\vs程序\线程与委托\线程与委托\obj\Debug\线程与委托.Properties.Resources.resources
+E:\C#\vs程序\线程与委托\线程与委托\obj\Debug\线程与委托.csproj.GenerateResource.cache
+E:\C#\vs程序\线程与委托\线程与委托\obj\Debug\线程与委托.exe
+E:\C#\vs程序\线程与委托\线程与委托\obj\Debug\线程与委托.pdb
