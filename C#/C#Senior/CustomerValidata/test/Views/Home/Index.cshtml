@@ -1,0 +1,23 @@
+﻿@model PersonData
+@{
+    ViewData["Title"] = "Home Page";
+}
+<style type="text/css">.red {
+     color: red
+ }</style>
+
+<div class="text-center">
+    <form asp-action="Test"  method="post">
+        <div class="form-group">
+            <input asp-for="Name" type="text" name="Name" value="" class="form-control" />
+            <span asp-validation-for="Name" class="red"></span>
+
+            <br />
+            <input asp-for="Age" type="text" name="Age" value="" class="form-control" />
+            <span asp-validation-for="Age" class="red"></span>
+            <br />
+        </div>
+        <button type="submit">提交</button>
+    </form>
+
+</div>
